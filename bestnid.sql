@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-05-2015 a las 01:17:10
+-- Tiempo de generación: 20-05-2015 a las 22:51:40
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -29,6 +29,17 @@ SET time_zone = "+00:00";
 CREATE TABLE IF NOT EXISTS `categoria` (
 `ID_CAT` int(11) NOT NULL,
   `Nombre` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `contraseña`
+--
+
+CREATE TABLE IF NOT EXISTS `contraseña` (
+  `ID_USR` int(11) NOT NULL,
+  `Pass` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -82,8 +93,10 @@ CREATE TABLE IF NOT EXISTS `subasta` (
 --
 
 CREATE TABLE IF NOT EXISTS `usuario` (
+`ID_USR` int(11) NOT NULL,
   `DNI` int(8) NOT NULL,
   `Nom_ape` varchar(60) NOT NULL,
+  `Fecha_reg` date NOT NULL,
   `Mail` varchar(70) NOT NULL,
   `Nro_tarjeta` int(20) NOT NULL,
   `Admin` tinyint(1) NOT NULL DEFAULT '0'
@@ -116,6 +129,12 @@ ALTER TABLE `categoria`
  ADD PRIMARY KEY (`ID_CAT`);
 
 --
+-- Indices de la tabla `contraseña`
+--
+ALTER TABLE `contraseña`
+ ADD PRIMARY KEY (`ID_USR`);
+
+--
 -- Indices de la tabla `oferta`
 --
 ALTER TABLE `oferta`
@@ -137,7 +156,7 @@ ALTER TABLE `subasta`
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
- ADD PRIMARY KEY (`DNI`);
+ ADD PRIMARY KEY (`ID_USR`);
 
 --
 -- Indices de la tabla `venta`
@@ -169,6 +188,11 @@ MODIFY `ID_PREG` int(11) NOT NULL AUTO_INCREMENT;
 --
 ALTER TABLE `subasta`
 MODIFY `ID_SUB` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `usuario`
+--
+ALTER TABLE `usuario`
+MODIFY `ID_USR` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `venta`
 --
