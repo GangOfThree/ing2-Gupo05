@@ -1,0 +1,90 @@
+#contenido{
+	display: block;
+	position: absolute;
+	top: 50px;
+	width: 100%;
+	/*background: linear-gradient(blue, black);*/
+}
+.carousel{
+	display: block;
+	position: absolute;
+	height:100%;
+	width:100%;
+	left:0%;
+}
+.carousel-inner{
+	display: block;
+	position: absolute;
+	width:100%;
+	height:100%;
+}
+#startBG{
+	display: none/*block*/;
+	position: absolute;
+	background-image: url("transparente.png");
+	width:40%;
+	height:66%;
+	top:10%;
+	left:7.5%;
+	border-radius: 2%;
+	box-shadow: 0px 2.5px 8px 0px rgba(0,0,0,0.65);
+}
+#presentacion{
+	display: block;
+	position: absolute;
+	background:#FFFFFF;
+
+}
+#logofrente{
+	border-style: solid;
+	border-width: 2px;
+	border-color: #222222;
+	border-radius: 50%;
+	width:20%;
+	box-shadow: 0px 0px 40px #FFFFFF;
+	opacity: 0.8;
+}
+#logofrente:hover{
+	opacity: 0.95;
+	box-shadow: 0px 0px 50px #FFFFFF;
+}
+#maintext{
+	display: block;
+    position: absolute;
+	height:100%;
+    top: 20%;
+    left: 6%;
+    color: #FFF;
+}
+.btn.btn-default.redbutton{
+	color: white;
+	background-color: #d4263c;
+	border-color: #d4263c;
+	width:30%;
+}
+.btn.btn-default.redbutton:hover{
+	background-color: #be2236;
+	border-color: #be2236;
+}
+#learnlogos{
+	box-shadow: 0px 2.5px 8px 0px rgba(0,0,0,0.65);
+}
+/**/
+.btn-min-block{
+    min-width: 170px;
+    line-height: 26px;
+}
+.btn-clear{
+    color: #FFF;
+    background-color: transparent;
+    border-color: #FFF;
+	border-width: 2px;
+}
+.btn-clear:hover{
+    color: transparent;
+    background-color: #FFF;
+}
+/**/
+body{
+	overflow:hidden;
+} 

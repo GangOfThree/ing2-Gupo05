@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Bestnid</title>
+<meta charset="UTF-8">
+<link href="../Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="../Bootstrap/dist/js/jquery-1.11.2.min.js"></script>
+<script src="../Bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../Bootstrap/dist/js/jquery.bpopup.min.js"></script>
+<script src="validacion.js"></script>
+<script src="manejoPopups.js"></script>
+<link href="header.css" rel="stylesheet">
+</head>
+
+<body>
+	
+<div class="navbar navbar-inverse navbar-fixed-top">
+	<div class="container">
+		<div class="navbar-header">
+			
+			<a class="navbar-brand" href="/">
+				<img src="logo.png" class="logo" title="Bestnid" border=4>
+			</a>
+			<!--<div class="navbar-collapse collapse">-->
+				<a href="/"><img src="letras.png" class="letras" title="Bestnid"></a>
+				<ul class="nav navbar-nav">
+					<!--<li class="active"><a href="/">Home</a></li>-->
+					<li class="dropdown" id="categorias"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Categorias </b><b class="caret"></b></a>
+							<ul class="dropdown-menu" id="menucategorias">
+								<li><a href="#">Antigüedades</a></li> 
+								<li><a href="#">Electrodomesticos</a></li>
+								<li><a href="#">Electrónica</a></li>
+								<li><a href="#">Inmuebles</a></li>
+								<li><a href="#">Juegos y juguetes</a></li> 
+								<li><a href="#">Muebles</a></li> 
+								<li><a href="#">Música</a></li> 
+								<li><a href="#">Peliculas y cine</a></li> 
+								<li><a href="#">Ropa</a></li>
+								<li><a href="#">Servicios</a></li>
+								<li><a href="#">Vehículos</a></li>
+								<li><a href="#">Otros...</a></li> 								
+							</ul>
+					</li>
+					<form action="" class="navbar-form navbar-right" id="busqueda">
+						<!--<div class="form-group">
+							<input type="text" class="form-control" size="70%" name="busqueda" placeholder="Buscar...">
+							<button type="submit" class="btn btn-default" id="searchButton">Buscar</button>
+						
+						</div>--><!--primer buscador-->
+						<div class="input-group">
+							<input type="text" class="form-control" size="70%" placeholder="Buscar...">
+							<span class="input-group-btn">
+								<button class="btn btn-default searchButton" type="submit" ><span class="glyphicon glyphicon-search"></button>
+							</span>
+						</div><!--segundo buscador-->
+					</form>
+					
+					<li id="registro"><span><a class="ex1" href="#">Registrarse</a></span></li>
+					<li id="signIn"><span><a class="ex1" href="#">Iniciar Sesión</a></span><li>
+				</ul>
+			<!--</div>-->
+			
+		</div>
+	<div>
+</div>
+<div class="container-fluid">
+	<div class="signInBG" id="signInWindow">
+		<div id="signInForm" class="container">
+			<div class="form-group">
+				<center><h2>Inicio de Sesión</h2></center>
+				<!-- <br> -->
+				<!-- <input type="text" class="form-control" name="usuario" placeholder="Ingrese su nombre de usuario..."> -->
+				<div style="margin-bottom: 25px" class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+					<input type="text" class="form-control" name="usuario" placeholder="Ingrese su mail...">
+				</div>
+				<!-- <input type="text" class="form-control" name="contraseña" placeholder="Ingrese su contraseña..."> -->
+				<!-- <br> -->
+				<div style="margin-bottom: 25px" class="input-group">
+					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+					<input type="password" class="form-control" name="contraseña" placeholder="Ingrese su contraseña...">
+				</div>
+				<center><button type="submit" class="btn btn-default searchButton">Iniciar Sesión</button></center>
+				<hr>
+				<a id="iforget" href="#">Olvidé mi contraseña...</a>
+			</div>
+		</div>
+		<br>
+		<br>
+	</div>
+</div>
+
+
+<div class="container-fluid">
+	<div class="signInBG" id="registerWindow">
+		<div id="registerForm" class="container">
+			<center><h2>Registrar Usuario</h2></center>
+			<form method="post" action="user_alta.php">
+			<div class="form-group">
+				<input class="form-control register" type="text" name="nombreyapellido" placeholder="Nombre y apellido" tabindex="1" required>
+			</div>
+			<div class="form-group">
+				<input class="form-control register" pattern="^[0-9]*" name="dni" placeholder="Número de DNI" tabindex="2" required>
+			</div>
+			<div class="form-group">
+				<input class="form-control register" type="email" name="email" placeholder="Dirección de Email" tabindex="3" required>
+			</div>
+			<div class="form-group">
+				<input class="form-control register" pattern="^[0-9]*" name="tarjeta" placeholder="Número de Tarjeta de Crédito" tabindex="4" required>
+			</div>
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<input class="form-control register" onkeyup="setPassword(this.value)" type="password" name="password" placeholder="Contraseña" tabindex="5" required>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<input class="form-control register" type="password" name="password_confirmation" placeholder="Confirmar Contraseña" tabindex="6" id="passvalidate" onkeyup="validatePassword(this.value)" required>
+						<span id="tick" class="glyphicon glyphicon-ok form-control-feedback" style="color:#3c763d; display:none; right:7%"></span>
+					</div>
+				</div>
+			</div>
+			<center><button type="submit" class="btn btn-default searchButton" id="registerButton" disabled>Registro</button></center>
+			</form>
+		</div>
+		<br>	
+	</div>
+</div>
+
+</body>
+</html>
