@@ -18,3 +18,19 @@ function validatePassword(f) {
 		tilde.style.display="none";
 	}
 }
+function verificar(){
+	// divresultado= document.getElementById('final');
+	var email =document.newUser.email.value;
+	//divresultado es un mensaje de espera
+	// divresultado.innerHTML="<img src='loading.gif'>";
+	$.ajax({type:"POST",
+			url:"ver.php",
+			data:"email="+email,
+			success:function(msg){
+				// $("#final").html(msg);
+				alert(email);
+				//Despues del mensaje borrar los input's
+				document.getElementById('email').value = '';
+			}
+	})
+}

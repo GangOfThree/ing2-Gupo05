@@ -18,6 +18,6 @@ echo "El usuario fue dado de alta.";
 ?>
 <br>
 <br>
-<a href="inicio.php"><button class="btn btn-default">Regresar</button></a> 
+<a href="index.php"><button class="btn btn-default">Regresar</button></a> 
 </body>
 </html>
