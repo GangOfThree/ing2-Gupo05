@@ -98,6 +98,26 @@ a.ex1:hover, a.ex1:active{
 	display: block;
 	width: 100%;
 }
+.popover{
+	background-color:black;
+	opacity: 0.8;
+	color: white;
+	border-color: black;
+	width:400px;
+	z-index: 2060;
+}
+.popover.right .arrow:after {
+  border-right-color: black;
+}
+.popover.left .arrow:after {
+  border-left-color: black;
+}
+.popover.top .arrow:after {
+  border-top-color: black;
+}
+.popover.bottom .arrow:after {
+  border-bottom-color: black;
+}
 input.register:focus:invalid{
 	background-color: #ffd4d4;
 	border-width: 1px;

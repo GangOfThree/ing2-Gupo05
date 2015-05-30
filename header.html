@@ -19,11 +19,11 @@
 	<div class="container">
 		<div class="navbar-header">
 			
-			<a class="navbar-brand" href="index.php">
+			<a class="navbar-brand" href="/">
 				<img src="logo.png" class="logo" title="Bestnid" border=4>
 			</a>
 			<!--<div class="navbar-collapse collapse">-->
-				<a href="index.php"><img src="letras.png" class="letras" title="Bestnid"></a>
+				<a href="/"><img src="letras.png" class="letras" title="Bestnid"></a>
 				<ul class="nav navbar-nav">
 					<!--<li class="active"><a href="/">Home</a></li>-->
 					<li class="dropdown" id="categorias"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Categorias </b><b class="caret"></b></a>
@@ -96,38 +96,65 @@
 	<div class="signInBG" id="registerWindow">
 		<div id="registerForm" class="container">
 			<center><h2>Registrar Usuario</h2></center>
-			<form method="post" name="newUser" onsubmit="verificar()"><!--action="user_alta.php"-->
-			<div class="form-group">
-				<input class="form-control register" type="text" name="nombreyapellido" placeholder="Nombre y apellido" tabindex="1" required>
-			</div>
-			<div class="form-group">
-				<input class="form-control register" pattern="^[0-9]*" name="dni" placeholder="Número de DNI" tabindex="2" required>
-			</div>
-			<div class="form-group">
-				<input class="form-control register" type="email" name="email" placeholder="Dirección de Email" tabindex="3" required>
-			</div>
-			<div class="form-group">
-				<input class="form-control register" pattern="^[0-9]*" name="tarjeta" placeholder="Número de Tarjeta de Crédito" tabindex="4" required>
-			</div>
+			<form name="newUser"><!--method="post" action="user_alta.php"> -->
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input class="form-control register" onkeyup="setPassword(this.value)" type="password" name="password" placeholder="Contraseña" tabindex="5" required>
+						<input class="form-control register" pattern="^[A-Za-zñÑáéíóúÁÉÍÓÚ]*" onchange="verificarNombre()" onkeyup="verificarNombre()" type="text" maxlength="60" name="nombre" placeholder="Nombre" tabindex="1" required data-toggle="popover" data-placement="left" data-content="Ingrese su nombre, Solo se aceptan letras" >
+						<span id="tickNombre" class="glyphicon glyphicon-ok form-control-feedback" style="color:#3c763d; display:none; right:13px"></span>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input class="form-control register" type="password" name="password_confirmation" placeholder="Confirmar Contraseña" tabindex="6" id="passvalidate" onkeyup="validatePassword(this.value)" required>
-						<span id="tick" class="glyphicon glyphicon-ok form-control-feedback" style="color:#3c763d; display:none; right:7%"></span>
+						<input class="form-control register" pattern="^[A-Za-zñÑáéíóúÁÉÍÓÚ]*" onchange="verificarApellido()" onkeyup="verificarApellido()" type="text" maxlength="60" name="apellido" placeholder="Apellido" tabindex="2" required data-toggle="popover" data-placement="right" data-content="Ingrese su apellido, Solo se aceptan letras" >
+						<span id="tickApellido" class="glyphicon glyphicon-ok form-control-feedback" style="color:#3c763d; display:none; right:13px"></span>
+					</div>
+				</div>	
+			</div>	
+			<div class="row">
+				<div class="col-xs-24 col-sm-12 col-md-12">
+					<div class="form-group">
+						<input class="form-control register" pattern="^[0-9]*" onchange="verificarDni()" onkeyup="verificarDni()" maxlength="15" name="dni" placeholder="Número de DNI" tabindex="3" required data-toggle="popover"  data-placement="right" data-content="Ingrese su numero de DNI, Solo se aceptan numeros" >
+						<span id="tickDNI" class="glyphicon glyphicon-ok form-control-feedback" style="color:#3c763d; display:none; right:13px"></span>
 					</div>
 				</div>
 			</div>
-			<center><button type="submit" class="btn btn-default searchButton" id="registerButton" disabled>Registro</button></center>
+			<div class="row">
+				<div class="col-xs-24 col-sm-12 col-md-12">
+					<div class="form-group">
+						<input class="form-control register" type="email" onchange="verificarMail()" onkeyup="verificarMail()" maxlength="55" name="email" placeholder="Dirección de Email" tabindex="4" required data-toggle="popover"  data-placement="left" data-content="Ingrese un email valido, Debe contener '@'" >
+						<span id="tickMail" class="glyphicon glyphicon-ok form-control-feedback" style="color:#3c763d; display:none; right:13px"></span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-24 col-sm-12 col-md-12">
+					<div class="form-group">
+						<input class="form-control register" pattern="^[0-9]*" onchange="verificarTarjeta()" onkeyup="verificarTarjeta()" maxlength="30" name="tarjeta" placeholder="Número de Tarjeta de Crédito" tabindex="5" required data-toggle="popover" data-placement="right" data-content="Ingrese un numero de trajeta valido, Solo se aceptan números" >
+						<span id="tickTarjeta" class="glyphicon glyphicon-ok form-control-feedback" style="color:#3c763d; display:none; right:13px"></span>
+					</div>
+				</div>
+			</div>	
+			<div class="row">
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<input class="form-control register" onchange="setPassword(this.value)" onkeyup="setPassword(this.value)" minlength="6" maxlength="30" type="password" name="password" placeholder="Contraseña" tabindex="6" required data-toggle="popover" data-placement="left" data-content="Ingrese su contraseña, la misma debe contener como mínimo 6 caracteres" >
+						<span id="tickPass" class="glyphicon glyphicon-ok form-control-feedback" style="color:#3c763d; display:none; right:13px"></span>
+					</div>
+				</div>
+				<div class="col-xs-12 col-sm-6 col-md-6">
+					<div class="form-group">
+						<input class="form-control register" minlength="6" maxlength="30" type="password" name="password_confirmation" placeholder="Confirmar Contraseña" tabindex="7" id="passvalidate" onchange="validatePassword(this.value)" onkeyup="validatePassword(this.value)" required disabled data-toggle="popover"  data-placement="right" data-content="Ingrese nuevamente su contraseña" >
+						<span id="tickPassConf" class="glyphicon glyphicon-ok form-control-feedback" style="color:#3c763d; display:none; right:13px"></span>
+					</div>
+				</div>
+			</div>
+			<!-- <center><input type="submit" onclick="return verificar();" class="btn btn-default searchButton" id="registerButton"  value="Registro" disabled></center> -->
+			<center><input type="button" onclick="return verificar();" class="btn btn-default searchButton" id="registerButton"  value="Registro" disabled></center
 			</form>
 		</div>
 		<br>	
 	</div>
 </div>
-
 </body>
 </html>
