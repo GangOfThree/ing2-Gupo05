@@ -34,8 +34,28 @@ $conexion=mysql_connect("localhost","root","")
 mysql_select_db("bestnid",$conexion) 
   or  die("Problemas en la selección de la base de datos");
 
-$registros=mysql_query("select * from subasta inner join categoria on categoria.ID_CAT=subasta.cate inner join usuario on subasta.user=usuario.ID_USR where Activo=1 and Nombre like '%$_GET[busqueda]%'",$conexion) or
+if (empty($_GET["orden"])){
+  $registros=mysql_query("select * from subasta inner join categoria on categoria.ID_CAT=subasta.cate inner join usuario on subasta.user=usuario.ID_USR where Activo=1 and Nombre like '%$_GET[busqueda]%'",$conexion) or
   die("Problemas en el select:".mysql_error());
+}
+else {
+  if (empty($_GET["sorted"])){
+    $registros=mysql_query("select * from subasta inner join categoria on categoria.ID_CAT=subasta.cate inner join usuario on subasta.user=usuario.ID_USR where Activo=1 and Nombre like '%$_GET[busqueda]%' order by $_GET[orden]",$conexion) or
+    die("Problemas en el select:".mysql_error());
+  }
+  else {
+    if($_GET["sorted"]=="asc"){
+      $registros=mysql_query("select * from subasta inner join categoria on categoria.ID_CAT=subasta.cate inner join usuario on subasta.user=usuario.ID_USR where Activo=1 and Nombre like '%$_GET[busqueda]%' order by $_GET[orden] ASC",$conexion) or
+      die("Problemas en el select:".mysql_error());
+    }
+    else {
+      if($_GET["sorted"]=="desc"){
+        $registros=mysql_query("select * from subasta inner join categoria on categoria.ID_CAT=subasta.cate inner join usuario on subasta.user=usuario.ID_USR where Activo=1 and Nombre like '%$_GET[busqueda]%' order by $_GET[orden] DESC",$conexion) or
+        die("Problemas en el select:".mysql_error());
+      }
+    }
+  }
+}
 
 echo '<table border="1">';
 
