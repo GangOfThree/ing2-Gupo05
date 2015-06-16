@@ -1,0 +1,24 @@
+#selector{
+	background-color:white; 
+	position:fixed; 
+	width:24%;
+	box-shadow: 0 4px 8px rgba(0,0,0,.34);
+}
+.nav > .active > a,
+.nav > .active > a:hover,
+.nav > .active > a:focus {
+  color: #fff;
+  background-color: #d4263c;
+}
+.nav > .item > a{
+	color:black;
+}
+#subastas{
+	box-shadow: 0 4px 8px rgba(0,0,0,.34);
+	min-height:530px;
+}
+
+body{
+	padding-top:70px;
+	overflow-x:hidden;
+}

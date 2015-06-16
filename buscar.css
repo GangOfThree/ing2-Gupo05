@@ -1,0 +1,31 @@
+table, th, td {
+    border: 0px solid black;
+    /*padding: 5px;*/
+    /*background-color: #EEE7E7;*/
+}
+table {
+    /*width: 100%;*/
+}
+td{
+	width: 250px;
+	height: 300px;
+}
+#div1{
+	cursor: pointer;
+	top: 60px;
+	right: 40px;
+  box-shadow: 0 4px 8px rgba(0,0,0,.34);
+  width:190px;
+  height: 264px;
+
+}
+#div1:hover{
+  background-color:#EEE7E7;
+  box-shadow: 0 6px 12px rgba(0,0,0,.40);
+}
+#img1{ 
+		border-radius: 10px;
+		top:1px;
+		width:90%;
+		max-height:110px;
+}

@@ -152,6 +152,8 @@ function verificar(){
 					alert("nuevo usuario registrado!");
 					//Despues del mensaje borrar los input's
 					resetFields();
+
+					location.href="autosign.php?email="+email;
 				}
 				else{
 					alert("ya existe otro usuario registrado con este email!!!");
@@ -163,7 +165,6 @@ function verificar(){
 // popover warnings
 
 $(document).ready(function(){
-	//$('#lala').keyup(
 	$('input[name=nombre]').keyup(
 	function(){
 		if(this.checkValidity()){
@@ -175,7 +176,6 @@ $(document).ready(function(){
 	});
 });
 $(document).ready(function(){
-	//$('#lala').keyup(
 	$('input[name=apellido]').keyup(
 	function(){
 		if(this.checkValidity()){
@@ -187,7 +187,6 @@ $(document).ready(function(){
 	});
 });
 $(document).ready(function(){
-	//$('#lala').keyup(
 	$('input[name=tarjeta]').keyup(
 	function(){
 		if(this.checkValidity()){
@@ -199,7 +198,6 @@ $(document).ready(function(){
 	});
 });
 $(document).ready(function(){
-	//$('#lala').keyup(
 	$('input[name=email]').keyup(
 	function(){
 		if(this.checkValidity()){
@@ -211,7 +209,6 @@ $(document).ready(function(){
 	});
 });
 $(document).ready(function(){
-	//$('#lala').keyup(
 	$('input[name=dni]').keyup(
 	function(){
 		if(this.checkValidity()){
@@ -223,7 +220,6 @@ $(document).ready(function(){
 	});
 });
 $(document).ready(function(){
-	//$('#lala').keyup(
 	$('input[name=password]').keyup(
 	function(){
 		if(this.checkValidity()){
@@ -235,7 +231,6 @@ $(document).ready(function(){
 	});
 });
 $(document).ready(function(){
-	//$('#lala').keyup(
 	$('input[name=password_confirmation]').keyup(
 	function(){
 		if(this.checkValidity()){
@@ -245,4 +240,7 @@ $(document).ready(function(){
 			$('input[name=password_confirmation]').popover('show');
 		}
 	});
+});
+$(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip(); 
 });

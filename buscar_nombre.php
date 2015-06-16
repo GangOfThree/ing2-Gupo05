@@ -1,33 +1,41 @@
+<!DOCTYPE html>
 <html>
 
-<link href="../listar.css" rel="stylesheet">
 <head>
+<link href="../Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="../Bootstrap/dist/js/jquery-1.11.2.min.js"></script>
+<script src="../Bootstrap/dist/js/bootstrap.min.js"></script>
 <title>Subastas</title>
-<style>
-table, th, td {
-    border: 0px solid black;
-    padding: 5px;
-    background-color: #EEE7E7;
-}
-table {
-    border-spacing: 15px;
-}
-td:hover {
-    background-color: #D4263C;
-}
-#div1{
-    background-color: #FFFFFF;
-    border-radius: 15px;
-}
-#img1{ 
-    border-radius: 15px;
-    top:1px;
-}
-</style>
+<link href="buscar.css" rel="stylesheet">
+
+<script language="JavaScript"> 
+function pregunta(idsubasta){ 
+    if (confirm('¿Estas seguro de que deseas eliminar esta subasta?')){ 
+       document.location.href='phpbaja.php?s='+idsubasta;
+    } 
+} 
+</script>
+<script language="JavaScript"> 
+function preguntamod(idsubasta){ 
+    if (confirm('¿ir a pagina modificar?')){ 
+       document.location.href='paginaModificacion.php?s='+idsubasta;
+    } 
+} 
+</script>
+
+
+
+<script language="JavaScript"> 
+function psuba(idsubasta){ 
+     document.location.href='paginaMostrarSubasta.php?idsubasta='+idsubasta;
+} 
+</script>
+
+
 </head>
 <body>
 <?php
-$conexion=mysql_connect("localhost","root","") 
+$conexion=mysql_connect("localhost","root","christian") 
   or  die("Problemas en la conexion");
 
 mysql_select_db("bestnid",$conexion) 
@@ -56,10 +64,9 @@ else {
   }
 }
 
-
 echo '<table border="1">';
 
-$totalf=6;
+$totalf=4;
 
 
 echo '<tr>';
@@ -69,16 +76,55 @@ $cant=count($registros);
 
 while ($reg=mysql_fetch_array($registros))
 {
+  $idsub=$reg['ID_SUB'];
   if ($totalf>0){
-    echo '<td>'.'<div id=div1>'.'<center>'.'<img id=img1 src="'.$reg['Foto'].'" alt=img1 width=200 height=150>'.'</center>'.'<br>'.'<center>'.'<a>'.$reg['Titulo'].'</a>'.'</center>'.'<br>'.'<center>'.'Categoria: '.$reg['Nombre'].'</center>'.'<br>'.'<center>'.'Fecha de inicio de esta subasta: '.'<br>'.$reg['Fec_init'].'</center>'.'<br>'.'</div>'.'</td>'; 
+    echo '<td>'.'<div class="container-fluid" id=div1 >'.
+                  '<br>'.
+                  '<center>'.'<img id=img1 onclick="psuba('.$idsub.')"  src="'.$reg['Foto'].'" alt=img1>'.'</center>'.
+                  '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'<br>'.'</center>'.
+                  '<center>'.
+                  'Categoria: '.$reg['nombreCat'].
+                  '</center>'.
+                  '<hr>'.
+                  '<center>'.
+                  '<a class="btn btn-primary btn-xs" onclick="psuba('.$idsub.')"  > Ofertar </a> '.
+                  '</center>'. 
+                  //'<center>'.
+                  //'<a class="btn btn-primary btn-xs"  onclick="pregunta('.$idsub.')"  > Cancelar </a> '.
+                  
+                  //'<a class="btn btn-primary btn-xs"  onclick="preguntamod('.$idsub.')"  > Modificar </a> '.
+                  //'</center>'.
+                  '<br>'. 
+                  '</div>'.
+          '</td>'; 
     $totalf=$totalf-1;
     
   }
   else{
+
+    #              '<button type="button" id="separar" href="paginaModificacion.php" class="btn btn-primary btn-xs">Modificar</button>'.'</span>'.
     echo '</tr>';
     echo '<tr>';
-    $totalf=6;
-    echo '<td>'.'<div id=div1>'.'<center>'.'<img id=img1 src="'.$reg['Foto'].'" alt=img1 width=200 height=150 >'.'</center>'.'<br>'.'<center>'.'<a>'.$reg['Titulo'].'</a>'.'</center>'.'<br>'.'<center>'.'Categoria: '.$reg['Nombre'].'</center>'.'<br>'.'<center>'.'Fecha de inicio de esta subasta: '.'<br>'.$reg['Fec_init'].'</center>'.'<br>'.'</div>'.'</td>';
+    $totalf=4;
+          echo '<td>'.'<div id=div1 >'.
+                  '<br>'.
+                  '<center>'.'<img id=img1 onclick="psuba('.$idsub.')"  src="'.$reg['Foto'].'" alt=img1>'.'</center>'.
+                  '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'<br>'.'</center>'.
+                  '<center>'.
+                  'Categoria: '.$reg['nombreCat'].
+                  '</center>'.
+                  '<hr>'. 
+                  '<center>'.
+                  '<a class="btn btn-primary btn-xs" onclick="psuba('.$idsub.')"  > Ofertar </a> '.
+                  '</center>'.
+                  // '<center>'.
+                  // '<a class="btn btn-primary btn-xs"  onclick="pregunta('.$idsub.')"  > Cancelar </a> '.
+                  
+                  // '<a class="btn btn-primary btn-xs"  onclick="preguntamod('.$idsub.')"  > Modificar </a> '.
+                  // '</center>'.
+                  '<br>'. 
+                  '</div>'.
+          '</td>'; 
     $totalf=$totalf-1;
   }
 

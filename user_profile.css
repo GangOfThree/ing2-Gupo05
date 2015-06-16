@@ -1,0 +1,14 @@
+.material_card{
+	background-color: white;
+	box-shadow: 0 4px 8px rgba(0,0,0,.34);
+}
+#desplegar{
+	cursor: pointer;
+}
+#arrow{
+	border-width: 6px;
+}
+body{
+	padding-top:70px;
+	overflow-x:hidden;
+}

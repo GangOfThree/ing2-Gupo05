@@ -1,7 +1,7 @@
 <?php 
 	$ID=$_REQUEST['s'];
 	$algo=(int)$ID;
-     $conexion=mysql_connect("localhost","root","lucas") 
+     $conexion=mysql_connect("localhost","root","christian") 
       or  die("Problemas en la conexion");
       mysql_select_db("bestnid",$conexion) 
        or  die("Problemas en la selección de la base de datos");
@@ -12,6 +12,12 @@
 
 mysql_close($conexion);
 
-    
+$mensaje = "subasta cancelada, click en aceptar para volver a ver el listado";
+echo "<script>";
+echo "if(confirm('$mensaje'));";  
+echo "window.location = 'listado_user.php';";
+// modificar vuelta
+echo "</script>";
+
 
 ?>

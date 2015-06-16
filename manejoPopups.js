@@ -18,3 +18,13 @@ $(document).ready(function(){
         });
 	});
 });
+$(document).ready(function(){
+    $("#agregarSubasta").click(function(){$("#registerWindow").bPopup({
+            speed: 650,
+            transition: 'slideIn',
+			transitionClose: 'slideBack',
+			positionStyle: 'absolute'
+			/*modalColor: 'none'*/
+        });
+	});
+});

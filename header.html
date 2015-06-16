@@ -8,41 +8,42 @@
 <script src="../Bootstrap/dist/js/jquery-1.11.2.min.js"></script>
 <script src="../Bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="../Bootstrap/dist/js/jquery.bpopup.min.js"></script>
-<script src="validacion.js"></script>
+<script src="validacion_registro.js"></script>
+<script src="validacion_sesion.js"></script>
 <script src="manejoPopups.js"></script>
 <link href="header.css" rel="stylesheet">
 </head>
 
-<body>
+<header>
 	
-<div class="navbar navbar-inverse navbar-fixed-top">
+<div id="header" class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
 			
-			<a class="navbar-brand" href="/">
+			<a class="navbar-brand" href="index.php">
 				<img src="logo.png" class="logo" title="Bestnid" border=4>
 			</a>
 			<!--<div class="navbar-collapse collapse">-->
-				<a href="/"><img src="letras.png" class="letras" title="Bestnid"></a>
+				<a href="index.php"><img src="letras.png" class="letras" title="Bestnid"></a>
 				<ul class="nav navbar-nav">
 					<!--<li class="active"><a href="/">Home</a></li>-->
 					<li class="dropdown" id="categorias"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Categorias </b><b class="caret"></b></a>
 							<ul class="dropdown-menu" id="menucategorias">
-								<li><a href="buscar_categoria.php?busqueda=Antigüedades">Antigüedades</a></li> 
-								<li><a href="buscar_categoria.php?busqueda=Electrodomesticos">Electrodomesticos</a></li>
-								<li><a href="buscar_categoria.php?busqueda=Electronica">Electrónica</a></li>
-								<li><a href="buscar_categoria.php?busqueda=Inmuebles">Inmuebles</a></li>
-								<li><a href="buscar_categoria.php?busqueda=Juegos y juguetes">Juegos y juguetes</a></li> 
-								<li><a href="buscar_categoria.php?busqueda=Muebles">Muebles</a></li> 
-								<li><a href="buscar_categoria.php?busqueda=Musica">Música</a></li> 
-								<li><a href="buscar_categoria.php?busqueda=Peliculas y cine">Peliculas y cine</a></li> 
-								<li><a href="buscar_categoria.php?busqueda=Ropa">Ropa</a></li>
-								<li><a href="buscar_categoria.php?busqueda=Servicios">Servicios</a></li>
-								<li><a href="buscar_categoria.php?busqueda=Vehiculos">Vehículos</a></li>
-								<li><a href="buscar_categoria.php?busqueda=Otros">Otros...</a></li> 								
+								<li><a href="searchbycategory.php?busqueda=Antigüedades">Antigüedades</a></li> 
+								<li><a href="searchbycategory.php?busqueda=Electrodomesticos">Electrodomesticos</a></li>
+								<li><a href="searchbycategory.php?busqueda=Electronica">Electrónica</a></li>
+								<li><a href="searchbycategory.php?busqueda=Inmuebles">Inmuebles</a></li>
+								<li><a href="searchbycategory.php?busqueda=Juegos y juguetes">Juegos y juguetes</a></li> 
+								<li><a href="searchbycategory.php?busqueda=Muebles">Muebles</a></li> 
+								<li><a href="searchbycategory.php?busqueda=Musica">Música</a></li> 
+								<li><a href="searchbycategory.php?busqueda=Peliculas y cine">Peliculas y cine</a></li> 
+								<li><a href="searchbycategory.php?busqueda=Ropa">Ropa</a></li>
+								<li><a href="searchbycategory.php?busqueda=Servicios">Servicios</a></li>
+								<li><a href="searchbycategory.php?busqueda=Vehiculos">Vehículos</a></li>
+								<li><a href="searchbycategory.php?busqueda=Otros">Otros...</a></li> 								
 							</ul>
 					</li>
-					<form action="buscar_nombre.php" class="navbar-form navbar-right" id="busqueda">
+					<form action="searchbyname.php" class="navbar-form navbar-right" id="busqueda">
 						<!--<div class="form-group">
 							<input type="text" class="form-control" size="70%" name="busqueda" placeholder="Buscar...">
 							<button type="submit" class="btn btn-default" id="searchButton">Buscar</button>
@@ -67,24 +68,30 @@
 <div class="container-fluid">
 	<div class="signInBG" id="signInWindow">
 		<div id="signInForm" class="container">
-			<div class="form-group">
-				<center><h2>Inicio de Sesión</h2></center>
-				<!-- <br> -->
-				<!-- <input type="text" class="form-control" name="usuario" placeholder="Ingrese su nombre de usuario..."> -->
-				<div style="margin-bottom: 25px" class="input-group">
-					<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-					<input type="text" class="form-control" name="usuario" placeholder="Ingrese su e-mail...">
+			<center><h2>Inicio de Sesión</h2></center>
+			<form name="signUser">
+				<div class="form-group">
+					<!-- <br> -->
+					<!-- <input type="text" class="form-control" name="usuario" placeholder="Ingrese su nombre de usuario..."> -->
+					<div style="margin-bottom: 25px" class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+						<input type="email" class="form-control register" name="usuarioMail" placeholder="Ingrese su mail..." maxlength="70" 
+						onkeyup="verificarUserMail()" required data-toggle="popover" data-placement="right" data-content="Ingrese el email con el que se registro en el sitio">
+					</div>
 				</div>
-				<!-- <input type="text" class="form-control" name="contraseña" placeholder="Ingrese su contraseña..."> -->
-				<!-- <br> -->
-				<div style="margin-bottom: 25px" class="input-group">
-					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-					<input type="password" class="form-control" name="contraseña" placeholder="Ingrese su contraseña...">
+					<!-- <input type="text" class="form-control" name="contraseña" placeholder="Ingrese su contraseña..."> -->
+					<!-- <br> -->
+				<div class="form-group">
+					<div style="margin-bottom: 25px" class="input-group">
+						<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+						<input type="password" class="form-control register" name="usuarioPass" placeholder="Ingrese su contraseña..." maxlength="20"
+						 onkeyup="verificarUserPass()" required data-toggle="popover" data-placement="right" data-content="Ingrese su contraseña">
+					</div>
 				</div>
-				<center><button type="submit" class="btn btn-default searchButton">Iniciar Sesión</button></center>
+				<center><input type="button" onclick="return verificarUsuario();" class="btn btn-default searchButton" id="signButton"  value="Iniciar sesión" disabled></center>
 				<hr>
 				<a id="iforget" href="#">Olvidé mi contraseña...</a>
-			</div>
+			</form>
 		</div>
 		<br>
 		<br>
@@ -138,23 +145,27 @@
 			<div class="row">
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input class="form-control register" onchange="setPassword(this.value)" onkeyup="setPassword(this.value)" minlength="6" maxlength="30" type="password" name="password" placeholder="Contraseña" tabindex="6" required data-toggle="popover" data-placement="left" data-content="Ingrese su contraseña, la misma debe contener como mínimo 6 caracteres" >
+						<input class="form-control register" onchange="setPassword(this.value)" onkeyup="setPassword(this.value)" minlength="6" maxlength="20" type="password" name="password" placeholder="Contraseña" tabindex="6" required data-toggle="popover" data-placement="left" data-content="Ingrese su contraseña, la misma debe contener como mínimo 6 caracteres" >
 						<span id="tickPass" class="glyphicon glyphicon-ok form-control-feedback" style="color:#3c763d; display:none; right:13px"></span>
 					</div>
 				</div>
 				<div class="col-xs-12 col-sm-6 col-md-6">
 					<div class="form-group">
-						<input class="form-control register" minlength="6" maxlength="30" type="password" name="password_confirmation" placeholder="Confirmar Contraseña" tabindex="7" id="passvalidate" onchange="validatePassword(this.value)" onkeyup="validatePassword(this.value)" required disabled data-toggle="popover"  data-placement="right" data-content="Ingrese nuevamente su contraseña" >
+						<input class="form-control register" minlength="6" maxlength="20" type="password" name="password_confirmation" placeholder="Confirmar Contraseña" tabindex="7" id="passvalidate" onchange="validatePassword(this.value)" onkeyup="validatePassword(this.value)" required disabled data-toggle="popover"  data-placement="right" data-content="Ingrese nuevamente su contraseña" >
 						<span id="tickPassConf" class="glyphicon glyphicon-ok form-control-feedback" style="color:#3c763d; display:none; right:13px"></span>
 					</div>
 				</div>
 			</div>
 			<!-- <center><input type="submit" onclick="return verificar();" class="btn btn-default searchButton" id="registerButton"  value="Registro" disabled></center> -->
-			<center><input type="button" onclick="return verificar();" class="btn btn-default searchButton" id="registerButton"  value="Registro" disabled></center
+			<center><input type="button" onclick="return verificar();" class="btn btn-default searchButton" id="registerButton"  value="Registro" disabled></center>
 			</form>
 		</div>
 		<br>	
 	</div>
 </div>
+</header>
+
+<body>
+	<div id="back" class="container"></div>
 </body>
 </html>

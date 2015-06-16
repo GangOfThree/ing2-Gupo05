@@ -10,7 +10,13 @@
 </head>
 <header>
 	<?php 
-	require_once('header.html');
+	session_start();
+	if(!isset($_SESSION['id'])){
+		require_once('header.html');
+	}
+	else{
+		require_once('user_header.php');		
+	}
 	?>
 	<script>
 	$(document).ready(function(){
@@ -89,7 +95,7 @@
 		<div id="maintext" class="container">
 				<div class="row">
                 <div class="col-md-12 text-center">
-					<center><img id="logofrente" src="logofrente.jpg" width=20%><center>
+					<center><a href="principal.php"><img id="logofrente" src="logofrente.jpg" width=20%></a><center>
 					
                     <h1><b>¡Bienvenido a Bestnid!<b></h1>
                     <h3>Encontrá todo lo que buscás y necesitas... </h3>
@@ -103,12 +109,6 @@
         </div>
 		<div id="startBG" class="container">
 			<div align="center">
-				<!--<div class="col-md-6">
-					<br>
-					<center><img src="logo2.png" width="65%">
-					<img src="letras.png" width="80%"></center>
-				</div>-->
-				<!--<div class="col-md-6 text-left">-->
 					<center><h1>¿Qué es Bestnid™?</h1></center>
 					<h4 align="justify">Una subasta o remate es una venta organizada de un producto basado en la competencia directa, 
 					es decir, aquel comprador (postor) que pague la mayor cantidad de dinero o de bienes es quien se quedará 
@@ -118,11 +118,15 @@
 					Es asi como hemos logrado crear una sistema organizado sobre el cual eran posibles todas las operaciones de subasta y 
 					compra de productos de una manera fácil, intuitiva y segura para usuarios de todo el mundo.</h4>
 					<hr>
-					<b>Registrate y empezá a disfrutar de Bestnid!</b><br><br>
-					<span>
-					<button class="btn btn-default redbutton" id="learnRegistro">Registro</button>
-					<button class="btn btn-default redbutton" id="learnInicio">Iniciar Sesión</button><!--</center>--></span>
-				<!--</div>-->
+					<?php 
+						if(!isset($_SESSION['id'])){ ?>
+							<b>Registrate y empezá a disfrutar de Bestnid!</b><br><br>
+							<span>
+							<button class="btn btn-default redbutton" id="learnRegistro">Registro</button>
+							<button class="btn btn-default redbutton" id="learnInicio">Iniciar Sesión</button></span>
+					<?php } else {?>
+							<img src="logofrente.jpg" class="logo" title="Bestnid" style="box-shadow: 0px 0px 40px #000000;" border=4>
+					<?php } ?>
 				
 			</div>
 		</div>
