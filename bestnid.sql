@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 16-06-2015 a las 21:09:08
+-- Tiempo de generación: 17-06-2015 a las 04:08:04
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -57,6 +57,7 @@ INSERT INTO `categoria` (`ID_CAT`, `nombreCat`) VALUES
 CREATE TABLE IF NOT EXISTS `oferta` (
 `ID_OFE` int(11) NOT NULL,
   `Motivo` varchar(300) NOT NULL,
+  `Monto` double NOT NULL DEFAULT '1',
   `user` int(11) NOT NULL,
   `sub` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -151,6 +152,7 @@ CREATE TABLE IF NOT EXISTS `venta` (
   `Fecha` date NOT NULL,
   `Motivo` varchar(300) NOT NULL,
   `Monto` double NOT NULL,
+  `Monto_dueño` double NOT NULL,
   `sub` int(11) NOT NULL,
   `user_ven` int(11) NOT NULL,
   `user_comp` int(11) NOT NULL
