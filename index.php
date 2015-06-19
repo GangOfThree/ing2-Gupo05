@@ -6,7 +6,7 @@
 	<script src="../Bootstrap/dist/js/jquery-1.11.2.min.js"></script>
 	<script src="../Bootstrap/dist/js/bootstrap.min.js"></script>
 	-->
-	<link href="inicio.css" rel="stylesheet">
+	<link href="css/inicio.css" rel="stylesheet">
 </head>
 <header>
 	<?php 
@@ -95,7 +95,7 @@
 		<div id="maintext" class="container">
 				<div class="row">
                 <div class="col-md-12 text-center">
-					<center><a href="principal.php"><img id="logofrente" src="logofrente.jpg" width=20%></a><center>
+					<center><a href="principal.php"><img id="logofrente" src="resources/logofrente.jpg" width=20%></a><center>
 					
                     <h1><b>¡Bienvenido a Bestnid!<b></h1>
                     <h3>Encontrá todo lo que buscás y necesitas... </h3>
@@ -125,7 +125,7 @@
 							<button class="btn btn-default redbutton" id="learnRegistro">Registro</button>
 							<button class="btn btn-default redbutton" id="learnInicio">Iniciar Sesión</button></span>
 					<?php } else {?>
-							<img src="logofrente.jpg" class="logo" title="Bestnid" style="box-shadow: 0px 0px 40px #000000;" border=4>
+							<img src="resources/logofrente.jpg" class="logo" title="Bestnid" style="box-shadow: 0px 0px 40px #000000;" border=4>
 					<?php } ?>
 				
 			</div>

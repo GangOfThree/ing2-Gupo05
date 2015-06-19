@@ -145,7 +145,7 @@ function verificar(){
 	var email=document.newUser.email.value;
 	var password_confirmation=document.newUser.password_confirmation.value;
 	$.ajax({type:"POST",
-			url:"user_alta.php",
+			url:"DBquery/user_alta.php",
 			data:{"email": email,"nombre" : nombre, "apellido" : apellido,"dni": dni,"tarjeta": tarjeta,"password":password},
 			success:function(msg){
 				if(msg==0){
@@ -153,7 +153,7 @@ function verificar(){
 					//Despues del mensaje borrar los input's
 					resetFields();
 
-					location.href="autosign.php?email="+email;
+					location.href="DBquery/autosign.php?email="+email;
 				}
 				else{
 					alert("ya existe otro usuario registrado con este email!!!");

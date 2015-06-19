@@ -2,11 +2,11 @@
 <html>
 
 <head>
-<link href="../Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="../Bootstrap/dist/js/jquery-1.11.2.min.js"></script>
-<script src="../Bootstrap/dist/js/bootstrap.min.js"></script>
+<link href="../../Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="../../Bootstrap/dist/js/jquery-1.11.2.min.js"></script>
+<script src="../../Bootstrap/dist/js/bootstrap.min.js"></script>
 <title>Subastas</title>
-<link href="buscar.css" rel="stylesheet">
+<link href="../css/buscar.css" rel="stylesheet">
 <script language="JavaScript"> 
 function pregunta(idsubasta){ 
     if (confirm('¿Estas seguro de que deseas eliminar esta subasta?')){ 
@@ -17,7 +17,7 @@ function pregunta(idsubasta){
 <script language="JavaScript"> 
 function preguntamod(idsubasta){ 
     if (confirm('¿ir a pagina modificar?')){ 
-       document.location.href='paginaModificacion.php?s='+idsubasta;
+       document.location.href='../paginaModificacion.php?s='+idsubasta;
     } 
 } 
 </script>
@@ -26,7 +26,7 @@ function preguntamod(idsubasta){
 
 <script language="JavaScript"> 
 function psuba(idsubasta){ 
-     document.location.href='paginaMostrarSubasta.php?idsubasta='+idsubasta;
+     document.location.href='../paginaMostrarSubasta.php?idsubasta='+idsubasta;
 } 
 </script>
 
@@ -65,7 +65,7 @@ while ($reg=mysql_fetch_array($registros))
   if ($totalf>0){
     echo '<td>'.'<div class="container-fluid" id=div1 >'.
                   '<br>'.
-                  '<center>'.'<img id=img1 onclick="psuba('.$idsub.')"  src="'.$reg['Foto'].'" alt=img1>'.'</center>'.
+                  '<center>'.'<img id=img1 onclick="psuba('.$idsub.')"  src="../'.$reg['Foto'].'" alt=img1>'.'</center>'.
                   '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'<br>'.'</center>'.
                   '<center>'.
                   'Categoria: '.$reg['nombreCat'].
@@ -90,7 +90,7 @@ while ($reg=mysql_fetch_array($registros))
     $totalf=4;
           echo '<td>'.'<div class="container-fluid" id=div1 >'.
                   '<br>'.
-                  '<center>'.'<img id=img1 onclick="psuba('.$idsub.')"  src="'.$reg['Foto'].'" alt=img1>'.'</center>'.
+                  '<center>'.'<img id=img1 onclick="psuba('.$idsub.')"  src="../'.$reg['Foto'].'" alt=img1>'.'</center>'.
                   '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'<br>'.'</center>'.
                   '<center>'.
                   'Categoria: '.$reg['nombreCat'].

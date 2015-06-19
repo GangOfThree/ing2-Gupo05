@@ -21,7 +21,7 @@
 #startBG{
 	display: none/*block*/;
 	position: absolute;
-	background-image: url("transparente.png");
+	background-image: url("../resources/transparente.png");
 	width:40%;
 	height:66%;
 	top:10%;

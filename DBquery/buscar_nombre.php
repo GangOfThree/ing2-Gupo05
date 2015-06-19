@@ -1,13 +1,12 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 
 <head>
-<link href="../Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="../Bootstrap/dist/js/jquery-1.11.2.min.js"></script>
-<script src="../Bootstrap/dist/js/bootstrap.min.js"></script>
+<link href="../../Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="../../Bootstrap/dist/js/jquery-1.11.2.min.js"></script>
+<script src="../../Bootstrap/dist/js/bootstrap.min.js"></script>
 <title>Subastas</title>
-<link href="buscar.css" rel="stylesheet">
-<meta charset="UTF-8">
+<link href="../css/buscar.css" rel="stylesheet">
 
 <script language="JavaScript"> 
 function pregunta(idsubasta){ 
@@ -28,9 +27,10 @@ function preguntamod(idsubasta){
 
 <script language="JavaScript"> 
 function psuba(idsubasta){ 
-     document.location.href='paginaMostrarSubasta.php?idsubasta='+idsubasta;
+     document.location.href='../paginaMostrarSubasta.php?idsubasta='+idsubasta;
 } 
 </script>
+
 
 </head>
 <body>
@@ -42,22 +42,22 @@ mysql_select_db("bestnid",$conexion)
   or  die("Problemas en la selección de la base de datos");
 
 if (empty($_GET["orden"])){
-  $registros=mysql_query("select * from subasta inner join categoria on categoria.ID_CAT=subasta.cate inner join usuario on subasta.user=usuario.ID_USR where Activo=1 and nombreCat like '%$_GET[busqueda]%'",$conexion) or
+  $registros=mysql_query("select * from subasta inner join categoria on categoria.ID_CAT=subasta.cate inner join usuario on subasta.user=usuario.ID_USR where Activo=1 and Titulo like '%$_GET[busqueda]%'",$conexion) or
   die("Problemas en el select:".mysql_error());
 }
 else {
   if (empty($_GET["sorted"])){
-    $registros=mysql_query("select * from subasta inner join categoria on categoria.ID_CAT=subasta.cate inner join usuario on subasta.user=usuario.ID_USR where Activo=1 and nombreCat like '%$_GET[busqueda]%' order by $_GET[orden]",$conexion) or
+    $registros=mysql_query("select * from subasta inner join categoria on categoria.ID_CAT=subasta.cate inner join usuario on subasta.user=usuario.ID_USR where Activo=1 and Titulo like '%$_GET[busqueda]%' order by $_GET[orden]",$conexion) or
     die("Problemas en el select:".mysql_error());
   }
   else {
     if($_GET["sorted"]=="asc"){
-      $registros=mysql_query("select * from subasta inner join categoria on categoria.ID_CAT=subasta.cate inner join usuario on subasta.user=usuario.ID_USR where Activo=1 and nombreCat like '%$_GET[busqueda]%' order by $_GET[orden] ASC",$conexion) or
+      $registros=mysql_query("select * from subasta inner join categoria on categoria.ID_CAT=subasta.cate inner join usuario on subasta.user=usuario.ID_USR where Activo=1 and Titulo like '%$_GET[busqueda]%' order by $_GET[orden] ASC",$conexion) or
       die("Problemas en el select:".mysql_error());
     }
     else {
       if($_GET["sorted"]=="desc"){
-        $registros=mysql_query("select * from subasta inner join categoria on categoria.ID_CAT=subasta.cate inner join usuario on subasta.user=usuario.ID_USR where Activo=1 and nombreCat like '%$_GET[busqueda]%' order by $_GET[orden] DESC",$conexion) or
+        $registros=mysql_query("select * from subasta inner join categoria on categoria.ID_CAT=subasta.cate inner join usuario on subasta.user=usuario.ID_USR where Activo=1 and Titulo like '%$_GET[busqueda]%' order by $_GET[orden] DESC",$conexion) or
         die("Problemas en el select:".mysql_error());
       }
     }
@@ -80,14 +80,14 @@ while ($reg=mysql_fetch_array($registros))
   if ($totalf>0){
     echo '<td>'.'<div class="container-fluid" id=div1 >'.
                   '<br>'.
-                  '<center>'.'<img id=img1 onclick="psuba('.$idsub.')"  src="'.$reg['Foto'].'" alt=img1>'.'</center>'.
+                  '<center>'.'<img id=img1 onclick="psuba('.$idsub.')"  src="../'.$reg['Foto'].'" alt=img1>'.'</center>'.
                   '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'<br>'.'</center>'.
                   '<center>'.
                   'Categoria: '.$reg['nombreCat'].
                   '</center>'.
                   '<hr>'.
                   '<center>'.
-                  '<a class="btn btn-primary btn-xs" onclick="psuba('.$idsub.')"  > Ofertar </a> '.
+                  '<a class="btn btn-primary btn-xs" onclick="psuba('.$idsub.')"  > Abrir </a> '.
                   '</center>'. 
                   //'<center>'.
                   //'<a class="btn btn-primary btn-xs"  onclick="pregunta('.$idsub.')"  > Cancelar </a> '.
@@ -108,14 +108,14 @@ while ($reg=mysql_fetch_array($registros))
     $totalf=4;
           echo '<td>'.'<div id=div1 >'.
                   '<br>'.
-                  '<center>'.'<img id=img1 onclick="psuba('.$idsub.')"  src="'.$reg['Foto'].'" alt=img1>'.'</center>'.
+                  '<center>'.'<img id=img1 onclick="psuba('.$idsub.')"  src="../'.$reg['Foto'].'" alt=img1>'.'</center>'.
                   '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'<br>'.'</center>'.
                   '<center>'.
                   'Categoria: '.$reg['nombreCat'].
                   '</center>'.
                   '<hr>'. 
                   '<center>'.
-                  '<a class="btn btn-primary btn-xs" onclick="psuba('.$idsub.')"  > Ofertar </a> '.
+                  '<a class="btn btn-primary btn-xs" onclick="psuba('.$idsub.')"  > Abrir </a> '.
                   '</center>'.
                   // '<center>'.
                   // '<a class="btn btn-primary btn-xs"  onclick="pregunta('.$idsub.')"  > Cancelar </a> '.

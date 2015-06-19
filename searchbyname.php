@@ -2,8 +2,8 @@
 <html>
 
 <head>
-	<link href="principal.css" rel="stylesheet">
-	<script src="principal.js"></script>
+	<link href="css/principal.css" rel="stylesheet">
+	<script src="js/principal.js"></script>
 	<script src="../Bootstrap/dist/js/jquery-1.11.2.min.js"></script>
 </head>
 <header>
@@ -38,17 +38,17 @@
 	      		<br>
 	      		<div id="porNombre" style="display:none">
 	      			<?php
-		      			echo '<iframe frameborder="NO" onload="autofitIframe(this);" style="width:100%" src="buscar_nombre.php?busqueda='.$_REQUEST['busqueda'].'&orden=Nombre">'.'</iframe>';
+		      			echo '<iframe frameborder="NO" onload="autofitIframe(this);" style="width:100%" src="DBquery/buscar_nombre.php?busqueda='.$_REQUEST['busqueda'].'&orden=Nombre">'.'</iframe>';
 		      		?>
 	      		</div>
 	      		<div id="porFecha" style="display:none">
 	      			<?php
-		      			echo '<iframe frameborder="NO" onload="autofitIframe(this);" style="width:100%" src="buscar_nombre.php?busqueda='.$_REQUEST['busqueda'].'&orden=Fec_init">'.'</iframe>';
+		      			echo '<iframe frameborder="NO" onload="autofitIframe(this);" style="width:100%" src="DBquery/buscar_nombre.php?busqueda='.$_REQUEST['busqueda'].'&orden=Fec_init">'.'</iframe>';
 		      		?>
 	      		</div>
 	      		<div id="porCategoria" style="display:none">
 	      			<?php
-		      			echo '<iframe frameborder="NO" onload="autofitIframe(this);" style="width:100%" src="buscar_nombre.php?busqueda='.$_REQUEST['busqueda'].'&orden=cate">'.'</iframe>';
+		      			echo '<iframe frameborder="NO" onload="autofitIframe(this);" style="width:100%" src="DBquery/buscar_nombre.php?busqueda='.$_REQUEST['busqueda'].'&orden=cate">'.'</iframe>';
 		      		?>
 	      		</div>
       		</div>

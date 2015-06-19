@@ -2,8 +2,8 @@
 <html>
 
 <head>
-	<link href="user_profile.css" rel="stylesheet">
-    <script src="user_profile.js"></script>
+	<link href="css/user_profile.css" rel="stylesheet">
+    <script src="js/user_profile.js"></script>
     <script src="../Bootstrap/dist/js/jquery-1.11.2.min.js"></script>
 </head>
 <header>
@@ -28,7 +28,7 @@
     			<h2>Mis Datos</h2>
     			<hr>
                 <div class="col-sm-2">
-                    <img src="img/placeholder-user.jpg" style="width:100%">
+                    <img src="resources/placeholder-user.jpg" style="width:100%">
                     <br>
                     <br>
                 </div>
@@ -53,7 +53,7 @@
                 <h2 id="desplegar"onclick="mostrar('userSubastas')">Mis Subastas <b id="arrow" class="caret"></b></h2>
                 <div id="userSubastas" style="display:none">
                     <hr>
-                    <iframe frameborder="NO" onload="autofitIframe(this);" style="width:100%" src="listado_user.php?userid=<?php echo $_SESSION['id']; ?>"></iframe>
+                    <iframe frameborder="NO" onload="autofitIframe(this);" style="width:100%" src="DBquery/listado_user.php?userid=<?php echo $_SESSION['id']; ?>"></iframe>
                 </div>
             </div>
         </div> 
@@ -63,7 +63,7 @@
                 <h2 id="desplegar"onclick="mostrar('userComentarios')">Mis Comentarios <b id="arrow" class="caret"></b></h2>
                 <div id="userComentarios" style="display:none">
                     <hr>
-                    <iframe frameborder="NO" onload="autofitIframe(this);" style="width:100%" src="listado_user.php"></iframe>
+                    <iframe frameborder="NO" onload="autofitIframe(this);" style="width:100%" src="DBquery/listado_user.php"></iframe>
                 </div>
             </div>
         </div>   

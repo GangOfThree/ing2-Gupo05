@@ -25,11 +25,11 @@ mysql_select_db("bestnid",$conexion)
 <script src="../Bootstrap/dist/js/jquery.bpopup.min.js"></script>
 <script src="validacion.js"></script>
 <script src="manejoPopups.js"></script>
-<link href="header.css" rel="stylesheet">
+<link href="css/header.css" rel="stylesheet">
 <link href="css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="pagmod.css">
+<link rel="stylesheet" type="text/css" href="css/pagmod.css">
 <script src="js/fileinput.min.js" type="text/javascript"></script>
-<script src="jspagmod.js"></script>
+<script src="js/pagmod.js"></script>
 </head>
 
 <body >
@@ -57,7 +57,7 @@ mysql_select_db("bestnid",$conexion)
 <script src="../Bootstrap/dist/js/jquery.bpopup.min.js"></script>
 <script src="validacion.js"></script>
 <script src="manejoPopups.js"></script>
-<link href="header.css" rel="stylesheet">
+<link href="css/header.css" rel="stylesheet">
 <link href="css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 
 <script src="js/fileinput.min.js" type="text/javascript"></script>
@@ -68,7 +68,7 @@ mysql_select_db("bestnid",$conexion)
     <div id="registerForm" class="container">
       <center><h2>Modificar</h2></center>
       <?php   while ($arreglo=mysql_fetch_array($query)){ ?>
-      <form method="post"  action="modificacion.php" enctype="multipart/form-data" ><!--action="user_alta.php"-->
+      <form method="post"  action="DBquery/modificacion.php" enctype="multipart/form-data" ><!--action="user_alta.php"-->
         <div class="form-group">
          <label>Modificar titulo:</label>
         <input class="form-control register" type="text" maxlength="30" name="titulo" placeholder="Titulo" tabindex="1" value="<?php echo $arreglo['Titulo'] ?>" required>

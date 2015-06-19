@@ -15,8 +15,8 @@ $registros=mysql_query("select * from subasta  where subasta.ID_SUB=$idsub",$con
 <head>
 
 <link href="../Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="buscar.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="pagmod.css">
+<link href="css/buscar.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="css/pagmod.css">
 </head>
 <body>
    <div>

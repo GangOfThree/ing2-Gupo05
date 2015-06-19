@@ -5,11 +5,11 @@ function verificarUsuario(){
 	var usuarioMail=document.signUser.usuarioMail.value;
 	var usuarioPass=document.signUser.usuarioPass.value;
 	$.ajax({type:"POST",
-			url:"crear_sesion.php",
+			url:"DBquery/crear_sesion.php",
 			data:{"email": usuarioMail,"password":usuarioPass},
 			success:function(msg){
 				if(msg==0){
-					alert("logueado!");
+					// alert("logueado!");
 					//Despues del mensaje borrar los input's
 					document.signUser.usuarioMail.value='';
 					document.signUser.usuarioPass.value='';

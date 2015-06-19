@@ -2,9 +2,8 @@
 <html>
 
 <head>
-	<link href="principal.css" rel="stylesheet">
-	<script src="principal.js"></script>
-	<script src="../Bootstrap/dist/js/jquery-1.11.2.min.js"></script>
+	<link href="css/principal.css" rel="stylesheet">
+	<script src="js/principal.js"></script>
 </head>
 <header>
 	<?php 
@@ -33,7 +32,7 @@
 			<div class="container-fluid" style="background-color:white;" id="subastas">
 	      		<br>
 	      		<?php
-		      		echo '<iframe frameborder="NO" onload="autofitIframe(this);" src="listado.php" style="width:100%"></iframe>';
+		      		echo '<iframe frameborder="NO" onload="autofitIframe(this);" src="DBquery/listado.php" style="width:100%"></iframe>';
 		      	?>
       		</div>
 		</div>

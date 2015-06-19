@@ -9,6 +9,7 @@ $ID=$_REQUEST['id'];
     $nombreArchivo=$_FILES['imagene']['name'][0];
     $nombreTemporal=$_FILES['imagene']['tmp_name'][0];
     $ruta=$directory.$nombreArchivo;
+    $rutaServer="../".$ruta;
    
   $conexion=mysql_connect("localhost","root","christian") 
       or  die("Problemas en la conexion");
@@ -36,7 +37,7 @@ $ID=$_REQUEST['id'];
           mysql_query("UPDATE subasta SET Foto='$ruta' where ID_SUB=$idsubasta ",$conexion) or
           die("Problemas en el select:".mysql_error());
              
-         move_uploaded_file($nombreTemporal,$ruta);
+         move_uploaded_file($nombreTemporal,$rutaServer);
 
        }
       
