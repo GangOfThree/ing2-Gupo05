@@ -11,7 +11,8 @@ $ID=$_REQUEST['id'];
     $ruta=$directory.$nombreArchivo;
     $rutaServer="../".$ruta;
    
-  $conexion=mysql_connect("localhost","root","christian") 
+      include("DBconnect.php");
+      $conexion=mysql_connect($host,$user,$pw) 
       or  die("Problemas en la conexion");
       mysql_select_db("bestnid",$conexion) 
        or  die("Problemas en la selección de la base de datos");

@@ -38,7 +38,8 @@ function psuba(idsubasta){
 
 session_start();
 
-$conexion=mysql_connect("localhost","root","christian") 
+include("DBconnect.php");
+$conexion=mysql_connect($host,$user,$pw)  
   or  die("Problemas en la conexion");
 
 mysql_select_db("bestnid",$conexion) 
@@ -46,7 +47,7 @@ mysql_select_db("bestnid",$conexion)
 
 $registros=mysql_query("select * 
                         from subasta inner join categoria on categoria.ID_CAT=subasta.cate inner join usuario on subasta.user=usuario.ID_USR 
-                        where Activo=1 and subasta.user=$_SESSION[id]",$conexion) or die("Problemas en el select:".mysql_error());
+                        where subasta.user=$_SESSION[id]",$conexion) or die("Problemas en el select:".mysql_error());
 
 
 echo '<table border="1">';
@@ -62,13 +63,27 @@ $cant=count($registros);
 while ($reg=mysql_fetch_array($registros))
 {
   $idsub=$reg['ID_SUB'];
+  if($reg['Activo'] == 1){ 
+    $tiempoRest= date_diff(date_create("today"),date_create($reg['Fec_fin']));
+    if($tiempoRest->format('%r%a') > 0){
+      $tiempoRest=$tiempoRest->format('Finaliza en %r%a días');
+    }
+    elseif ($tiempoRest->format('%r%a') == 0) {
+      $tiempoRest="Finaliza en unas horas";
+    }
+  }  
+  else{
+      $tiempoRest="Subasta finalizada";
+  }
+
   if ($totalf>0){
     echo '<td>'.'<div class="container-fluid" id=div1 >'.
                   '<br>'.
                   '<center>'.'<img id=img1 onclick="psuba('.$idsub.')"  src="../'.$reg['Foto'].'" alt=img1>'.'</center>'.
-                  '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'<br>'.'</center>'.
+                  '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'</center>'.
                   '<center>'.
                   'Categoria: '.$reg['nombreCat'].
+                  '<h6>'.$tiempoRest.'</h6>'.
                   '</center>'.
                   '<hr>'. 
                   '<center>'.
@@ -91,9 +106,10 @@ while ($reg=mysql_fetch_array($registros))
           echo '<td>'.'<div class="container-fluid" id=div1 >'.
                   '<br>'.
                   '<center>'.'<img id=img1 onclick="psuba('.$idsub.')"  src="../'.$reg['Foto'].'" alt=img1>'.'</center>'.
-                  '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'<br>'.'</center>'.
+                  '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'</center>'.
                   '<center>'.
                   'Categoria: '.$reg['nombreCat'].
+                  '<h6>'.$tiempoRest.'</h6>'.
                   '</center>'.
                   '<hr>'. 
                   '<center>'.

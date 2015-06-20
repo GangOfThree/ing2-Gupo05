@@ -1,10 +1,7 @@
 <?php
 
 session_start();
-$host = "localhost";
-$user = "root";
-$pw = "christian";
-$db = "bestnid";
+include("DBconnect.php");
 
 $directory="img/";
  $nombreArchivo=$_FILES['imagenes']['name'][0];

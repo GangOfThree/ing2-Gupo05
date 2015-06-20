@@ -36,7 +36,8 @@ function psuba(idsubasta){
 
 <body>
 <?php
-$conexion=mysql_connect("localhost","root","christian") 
+include("DBconnect.php");
+$conexion=mysql_connect($host,$user,$pw)  
   or  die("Problemas en la conexion");
 
 mysql_select_db("bestnid",$conexion) 
@@ -57,18 +58,21 @@ $cant=count($registros);
 while ($reg=mysql_fetch_array($registros))
 {
   $idsub=$reg['ID_SUB'];
+  $tiempoRest= date_diff(date_create("today"),date_create($reg['Fec_fin']));
+  $tiempoRest=$tiempoRest->format('Finaliza en %r%a días');
   if ($totalf>0){
     echo '<td>'.'<div class="container-fluid" id=div1 >'.
                   '<br>'.
                   '<center>'.'<img id=img1 onclick="psuba('.$idsub.')"  src="../'.$reg['Foto'].'" alt=img1>'.'</center>'.
-                  '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'<br>'.'</center>'.
+                  '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'</center>'.
                   '<center>'.
                   'Categoria: '.$reg['nombreCat'].
+                  '<h6>'.$tiempoRest.'</h6>'.
                   '</center>'.
                   '<hr>'.
                   '<center>'.
                   '<a class="btn btn-primary btn-xs" onclick="psuba('.$idsub.')"  > Abrir </a> '.
-                  '</center>'. 
+                  '</center>'.
                   //'<center>'.
                   //'<a class="btn btn-primary btn-xs"  onclick="pregunta('.$idsub.')"  > Cancelar </a> '.
                   
@@ -89,9 +93,10 @@ while ($reg=mysql_fetch_array($registros))
           echo '<td>'.'<div class="container-fluid" id=div1 >'.
                   '<br>'.
                   '<center>'.'<img id=img1 onclick="psuba('.$idsub.')"  src="../'.$reg['Foto'].'" alt=img1>'.'</center>'.
-                  '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'<br>'.'</center>'.
+                  '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'</center>'.
                   '<center>'.
                   'Categoria: '.$reg['nombreCat'].
+                  '<h6>'.$tiempoRest.'</h6>'.
                   '</center>'.
                   '<hr>'. 
                   '<center>'.
