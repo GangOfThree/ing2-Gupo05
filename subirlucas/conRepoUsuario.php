@@ -62,6 +62,7 @@ $registros=mysql_query(" select * from usuario where (usuario.Fecha_reg between 
        <td>
           <?php echo $cantsubastas  ?>
        </td>
+       <?php echo $cantsubastas['fechaini']  ?>
        <td>
        	<?php echo $_REQUEST['fechafin']  ?>
        </td>
