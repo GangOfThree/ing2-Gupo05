@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 17-06-2015 a las 04:08:04
+-- Tiempo de generación: 24-06-2015 a las 20:41:01
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -73,8 +73,20 @@ CREATE TABLE IF NOT EXISTS `pregunta` (
   `Contenido` varchar(400) NOT NULL,
   `Fecha` date NOT NULL,
   `user` int(11) NOT NULL,
-  `sub` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `sub` int(11) NOT NULL,
+  `respuesta` int(11) DEFAULT NULL,
+  `eliminado` tinyint(1) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `pregunta`
+--
+
+INSERT INTO `pregunta` (`ID_PREG`, `Contenido`, `Fecha`, `user`, `sub`, `respuesta`, `eliminado`) VALUES
+(1, 'Esta llama es entrable?', '2015-06-23', 47, 22, 2, 0),
+(2, 'Seeeeeh', '2015-06-23', 48, 22, NULL, 0),
+(3, 'La llama tiene soporte para montura 2.0?', '2015-06-23', 49, 22, NULL, 0),
+(4, 'Esto sirve tambien para derrotar a Batman?', '2015-06-24', 49, 21, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -152,7 +164,7 @@ CREATE TABLE IF NOT EXISTS `venta` (
   `Fecha` date NOT NULL,
   `Motivo` varchar(300) NOT NULL,
   `Monto` double NOT NULL,
-  `Monto_dueño` double NOT NULL,
+  `Monto_dueno` double NOT NULL,
   `sub` int(11) NOT NULL,
   `user_ven` int(11) NOT NULL,
   `user_comp` int(11) NOT NULL
@@ -216,7 +228,7 @@ MODIFY `ID_OFE` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `pregunta`
 --
 ALTER TABLE `pregunta`
-MODIFY `ID_PREG` int(11) NOT NULL AUTO_INCREMENT;
+MODIFY `ID_PREG` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `subasta`
 --
