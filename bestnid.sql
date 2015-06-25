@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-06-2015 a las 20:41:01
+-- Tiempo de generación: 25-06-2015 a las 08:15:28
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -76,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `pregunta` (
   `sub` int(11) NOT NULL,
   `respuesta` int(11) DEFAULT NULL,
   `eliminado` tinyint(1) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `pregunta`
@@ -85,8 +85,11 @@ CREATE TABLE IF NOT EXISTS `pregunta` (
 INSERT INTO `pregunta` (`ID_PREG`, `Contenido`, `Fecha`, `user`, `sub`, `respuesta`, `eliminado`) VALUES
 (1, 'Esta llama es entrable?', '2015-06-23', 47, 22, 2, 0),
 (2, 'Seeeeeh', '2015-06-23', 48, 22, NULL, 0),
-(3, 'La llama tiene soporte para montura 2.0?', '2015-06-23', 49, 22, NULL, 0),
-(4, 'Esto sirve tambien para derrotar a Batman?', '2015-06-24', 49, 21, NULL, 0);
+(3, 'La llama tiene soporte para montura 2.0?', '2015-06-23', 49, 22, 15, 0),
+(4, 'Esto sirve tambien para derrotar a Batman?', '2015-06-24', 49, 21, NULL, 0),
+(13, 'Cuanto le mide a la llama?', '2015-06-25', 47, 22, NULL, 1),
+(14, 'lala', '2015-06-25', 50, 22, NULL, 0),
+(15, 'Respuesta de prueba', '2015-06-25', 48, 22, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -228,7 +231,7 @@ MODIFY `ID_OFE` int(11) NOT NULL AUTO_INCREMENT;
 -- AUTO_INCREMENT de la tabla `pregunta`
 --
 ALTER TABLE `pregunta`
-MODIFY `ID_PREG` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+MODIFY `ID_PREG` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT de la tabla `subasta`
 --

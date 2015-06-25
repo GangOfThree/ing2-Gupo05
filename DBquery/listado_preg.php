@@ -60,12 +60,17 @@ while ($reg=mysql_fetch_array($registros))
                           echo "Comentario eliminado";
                       }
                       echo '</p>'.
-                   '</div>';
+                   '</div>'.
+                  '<br>';
                   ?>
-                  <?php if( ($_SESSION['id']==$reg['s_d']) && (!isset($reg['i_r']) ) ){?>
-                     <p class="text-right"><a href="#" class="btn btn-primary btn-sm"><i class="fa fa-reply"></i> Responder</a></p>
+                  <?php if( ($_SESSION['id']==$reg['s_d']) && (!isset($reg['i_r']) ) ){
+                    if ($reg['p_eli']==0 ){?>
+                     <form method="post" action=<?php echo 'publicar_respuesta.php?idsubasta='.$idsub.'&idpreg='.$reg['i_p'];?>>
+                     
+                     <p class="text-right"><textarea rows=1 cols=100 name="respuesta" placeholder="Responder esta pregunta..."></textarea><button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-reply"></i> Responder</a></p>
+                     </form>
                   <?php
-                } else{
+                }} else{
                     if ( ($_SESSION['id']==$reg['p_d']) && ($reg['p_eli']==0) ){?>
                       <p class="text-right"><a href="#" class="btn btn-default btn-sm" onclick=preguntaeli(<?php echo $reg['i_p'];?>)><i class="fa fa-trash"></i> Eliminar</a></p>
                     <?php
