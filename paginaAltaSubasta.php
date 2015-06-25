@@ -18,18 +18,7 @@ mysql_select_db("bestnid",$conexion)
 
 <head>
   
-  <!--
-<link href="../Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="../Bootstrap/dist/js/jquery-1.11.2.min.js"></script>
-<script src="../Bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../Bootstrap/dist/js/jquery.bpopup.min.js"></script>
-<script src="validacion.js"></script>
-<script src="manejoPopups.js"></script>
-<link href="css/header.css" rel="stylesheet">
-<link href="css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
-<link rel="stylesheet" type="text/css" href="css/pagmod.css">
-<script src="js/fileinput.min.js" type="text/javascript"></script>
-<script src="js/pagmod.js"></script>-->
+ 
 </head>
 
 <body >
@@ -45,7 +34,7 @@ $userid= $_SESSION['id'];
 <title>Bestnid</title>
 <meta charset="UTF-8">
 <link href="../Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/altacss.css">
+<link rel="stylesheet" type="text/css" href="css/alta.css">
 <link rel="stylesheet" type="text/css" href="ofertar.css">
 <script src="../Bootstrap/dist/js/jquery-1.11.2.min.js"></script>
 <script src="../Bootstrap/dist/js/bootstrap.min.js"></script>
