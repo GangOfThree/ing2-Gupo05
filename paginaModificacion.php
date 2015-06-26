@@ -1,7 +1,7 @@
 <?php
 #$idsubasta=$_REQUEST['id'];
 $idsub=$_REQUEST['s'];
-$conexion=mysql_connect("localhost","root","christian") 
+$conexion=mysql_connect("localhost","root","lucas") 
   or  die("Problemas en la conexion");
 
 mysql_select_db("bestnid",$conexion) 
@@ -43,7 +43,8 @@ mysql_select_db("bestnid",$conexion)
 
 
 <?php
-
+session_start();
+$userid= $_SESSION['id'];
 ?>
 
 <html>
@@ -59,6 +60,14 @@ mysql_select_db("bestnid",$conexion)
 <script src="manejoPopups.js"></script>
 <link href="css/header.css" rel="stylesheet">
 <link href="css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
+<script language="JavaScript"> 
+function cance(uid){ 
+
+        var pagina="DBquery/listado_user.php?iduser="+uid;
+       document.location.href=pagina;
+    
+} 
+</script>
 
 <script src="js/fileinput.min.js" type="text/javascript"></script>
 </head>
@@ -75,13 +84,15 @@ mysql_select_db("bestnid",$conexion)
         </div>
         <input type="hidden" name="id" value="<?php echo $idsub ?>"> </input>
         <div class="form-group">
-          <label>Modificar Descripcion</label>
-        <input class="form-control register" type="text" maxlenght="200" name="description" placeholder="descripcion" tabindex="2" value="<?php echo $arreglo['Descripcion'] ?>" >
-        </div> 
+          
+          <label for="Modificar Descripcion">Modificar Descripcion:</label>
+          <textarea class="form-control register"  maxlenght="200" rows="5" id="Modificar Descripcion" name="description"> <?php echo $arreglo['Descripcion'] ?></textarea>
+         </div> 
         <div class"form-group" >
         <label> seleccione una categoria si desea modificar </label>
          <select name="category"  >    
-                <!-- <option value="<?php echo $arreglo['ID_CAT'] ?>"> <?php echo $arreglo['nombreCat'] ?> </option> -->
+                <!-- <option value="<?php echo $arreglo['ID_CAT'] ?>"> <?php echo $arreglo['nombreCat'] ?> </option>    <input class="form-control register" type="text" maxlenght="200" name="description" placeholder="descripcion" tabindex="2" value="<?php echo $arreglo['Descripcion'] ?>" >
+       -->
                 <option value="2"> Electrodomesticos</option>
                 <option value="3" > Electronica</option>
                 <option value="4" > Inmuebles</option>
@@ -99,13 +110,13 @@ mysql_select_db("bestnid",$conexion)
   
 <div class="container">
        <div class="form-group">
-            <div id="caja" >
+           <center> <div id="caja" >
                 <label>Imagen subasta Actual:</label>
                     <br>
                     <center><img src="<?php echo $arreglo['Foto']?>" class="file-preview-frame" > 
                     <br><br>
                    <label>Seleccionar nueva imagen:</label>
-                     <input id="file-3" type="file" name="imagene[]" >
+                     <input id="file-3" type="file" name="imagenes[]" >
                         <script>
                         $("#file-3").fileinput({
                         showCaption: false,
@@ -115,10 +126,11 @@ mysql_select_db("bestnid",$conexion)
                          });
                         </script></center>  
                 <div id="separartop">
-                 <center><button  class="btn btn-default searchButton"  >Modificar</button></center>
+                 <center><a  class="btn btn-default searchButton" onClick="cance(<?php echo $userid?>)"  >Cancelar</a> <button  class="btn btn-default searchButton"  >Modificar</button></center>
+                 <center></center>
                 </div>
               </form>  
-            </div>
+            </div></center>
       </div>
   </div>
     <br>  
