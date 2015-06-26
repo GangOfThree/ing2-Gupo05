@@ -33,17 +33,19 @@
                     <br>
                 </div>
                 <div class="col-sm-10">
-        			<p><b>Nombre:</b> <?php echo $_SESSION['nombre'] ?>
-        			<br>
-        			<b>Apellido:</b> <?php echo $_SESSION['apellido'] ?>
-        			<br>
-        			<b>DNI:</b> <?php echo $_SESSION['dni'] ?>
-        			<br>
-        			<b>E-mail:</b> <?php echo $_SESSION['mail'] ?>
-        			<br>
-        			<b>Número de tarjeta:</b> <?php echo $_SESSION['tarjeta'] ?>
-        			<br>
-        			<b>Contraseña:</b> *********</p>
+                    <p><b><?php if($_SESSION['admin']==1){ echo "Usuario Administrador"; } ?></b>
+                    <br>
+                    <b>Nombre:</b> <?php echo $_SESSION['nombre'] ?>
+                    <br>
+                    <b>Apellido:</b> <?php echo $_SESSION['apellido'] ?>
+                    <br>
+                    <b>DNI:</b> <?php echo $_SESSION['dni'] ?>
+                    <br>
+                    <b>E-mail:</b> <?php echo $_SESSION['mail'] ?>
+                    <br>
+                    <b>Número de tarjeta:</b> <?php echo $_SESSION['tarjeta'] ?>
+                    <br>
+                    <b>Contraseña:</b> *********</p>
                 </div>
     		</div>
         </div>
@@ -63,10 +65,20 @@
                 <h2 id="desplegar"onclick="mostrar('userComentarios')">Mis Comentarios <b id="arrow" class="caret"></b></h2>
                 <div id="userComentarios" style="display:none">
                     <hr>
-                    <iframe frameborder="NO" onload="autofitIframe(this);" style="width:100%" src="DBquery/listado_user.php"></iframe>
+                    <?php require_once("DBquery/listado_mis_comentarios.php"); ?>
                 </div>
             </div>
-        </div>   
+        </div>
+        <br>
+        <div class="row">
+            <div class="container material_card">
+                <h2 id="desplegar"onclick="mostrar('ofertasRecibidas')">Ofertas recibidas <b id="arrow" class="caret"></b></h2>
+                <div id="ofertasRecibidas" style="display:none">
+                    <hr>
+                    <?php require_once("DBquery/listado_subs_oferta.php"); ?>
+                </div>
+            </div>
+        </div> 
     </div>
     
     <div class="col-sm-1"></div>

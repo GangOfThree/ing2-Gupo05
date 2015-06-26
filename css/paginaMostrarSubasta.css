@@ -1,0 +1,30 @@
+.material_card{
+	background-color: white;
+	box-shadow: 0 4px 8px rgba(0,0,0,.34);
+}
+.transparent{
+	background-color: inherit;
+	background-image: url("../resources/transparente.png");
+	/*box-shadow: 0 4px 8px rgba(0,0,0,.34);*/
+	opacity: 1;
+}
+#imagenProducto{
+	/*display: block;*/
+	position: relative;
+	top: 6px;
+	height:100%;
+	/*left:6%;*/
+}
+.horizontal-line{
+	clear:both;
+	width:98%; 
+	height:1px; 
+	border-width:1px; 
+	border-style: solid; 
+	border-color:#EEEEEE;
+}
+body{
+	height:100%;
+	padding-top:70px;
+	overflow-x:hidden;
+}

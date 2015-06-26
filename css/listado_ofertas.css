@@ -1,0 +1,19 @@
+#reasonColumn{
+	width: 50%;
+}
+#nameColumn{
+	white-space: nowrap;
+	width: 10%;	
+}
+#mountColumn{
+	white-space: nowrap;
+	width: 10%;
+}
+#chooseColumn{
+	white-space: nowrap;
+	width: 12%;
+}
+.autoFixed{
+	white-space: nowrap;
+	width: 10%;
+}

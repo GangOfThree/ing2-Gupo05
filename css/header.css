@@ -57,6 +57,12 @@
 	top: 0px;
 	left: 19%;
 }
+#reportes{
+	display: block;
+	position: absolute;
+	top: 0px;
+	right: 24.5%;
+}
 #menucategorias{
 	top: 104%;
 }

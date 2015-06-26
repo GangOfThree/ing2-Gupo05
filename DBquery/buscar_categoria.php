@@ -28,7 +28,7 @@ function preguntamod(idsubasta){
 
 <script language="JavaScript"> 
 function psuba(idsubasta){ 
-     document.location.href='../paginaMostrarSubasta.php?idsubasta='+idsubasta;
+     window.top.location.href='../paginaMostrarSubasta.php?idsubasta='+idsubasta;
 } 
 </script>
 
@@ -80,7 +80,12 @@ while ($reg=mysql_fetch_array($registros))
 {
   $idsub=$reg['ID_SUB'];
   $tiempoRest= date_diff(date_create("today"),date_create($reg['Fec_fin']));
-  $tiempoRest=$tiempoRest->format('Finaliza en %r%a días');
+  if(date_create("today") == date_create($reg['Fec_fin'])){
+      $tiempoAMostrar=$tiempoRest->format('Finaliza en unas horas');
+    }
+    else{
+      $tiempoAMostrar=$tiempoRest->format('Finaliza en %r%a días');
+    }
   if ($totalf>0){
     echo '<td>'.'<div class="container-fluid" id=div1 >'.
                   '<br>'.
@@ -88,7 +93,7 @@ while ($reg=mysql_fetch_array($registros))
                   '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'</center>'.
                   '<center>'.
                   'Categoria: '.$reg['nombreCat'].
-                  '<h6>'.$tiempoRest.'</h6>'.
+                  '<h6>'.$tiempoAMostrar.'</h6>'.
                   '</center>'.
                   '<hr>'.
                   '<center>'.
@@ -111,23 +116,23 @@ while ($reg=mysql_fetch_array($registros))
     echo '</tr>';
     echo '<tr>';
     $totalf=4;
-          echo '<td>'.'<div id=div1 >'.
+    echo '<td>'.'<div class="container-fluid" id=div1 >'.
                   '<br>'.
                   '<center>'.'<img id=img1 onclick="psuba('.$idsub.')"  src="../'.$reg['Foto'].'" alt=img1>'.'</center>'.
                   '<center>'.'<a onclick="psuba('.$idsub.')">'.$reg['Titulo'].  '</a>'.'</center>'.'</center>'.
                   '<center>'.
                   'Categoria: '.$reg['nombreCat'].
-                  '<h6>'.$tiempoRest.'</h6>'.
+                  '<h6>'.$tiempoAMostrar.'</h6>'.
                   '</center>'.
-                  '<hr>'. 
+                  '<hr>'.
                   '<center>'.
                   '<a class="btn btn-primary btn-xs" onclick="psuba('.$idsub.')"  > Abrir </a> '.
-                  '</center>'.
-                  // '<center>'.
-                  // '<a class="btn btn-primary btn-xs"  onclick="pregunta('.$idsub.')"  > Cancelar </a> '.
+                  '</center>'. 
+                  //'<center>'.
+                  //'<a class="btn btn-primary btn-xs"  onclick="pregunta('.$idsub.')"  > Cancelar </a> '.
                   
-                  // '<a class="btn btn-primary btn-xs"  onclick="preguntamod('.$idsub.')"  > Modificar </a> '.
-                  // '</center>'.
+                  //'<a class="btn btn-primary btn-xs"  onclick="preguntamod('.$idsub.')"  > Modificar </a> '.
+                  //'</center>'.
                   '<br>'. 
                   '</div>'.
           '</td>'; 

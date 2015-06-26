@@ -4,7 +4,7 @@
 <body>
 <div>
 
-	<form method="get" action="conReporteVentas.php">
+	<form method="get" action="DBquery/conReporteVentas.php">
           <label for="fecha"> seleccionar fecha inicio:</label>
           <br>
            <input id="fecha" name="fechaini" type="date" />

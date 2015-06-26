@@ -9,7 +9,7 @@
 <?php
 
  session_start();
-include("DBquery/DBconnect.php");
+include("DBconnect.php");
 $conexion=mysql_connect($host,$user,$pw)  
   or  die("Problemas en la conexion");
 
@@ -27,7 +27,6 @@ $registros=mysql_query(" select * from usuario where (usuario.Fecha_reg between 
 	        <th>Mail</th>
 	        <th>Dni</th>
 	        <th>Numero de tarjeta</th>
-	        <th> </th>
 	      </tr>
 	</thead>
 	<tbody>
@@ -48,7 +47,6 @@ $registros=mysql_query(" select * from usuario where (usuario.Fecha_reg between 
 			<td> <?php echo  $reg['DNI']  ?></td>
 			<td> <?php echo  $reg['Nro_tarjeta'] ?></td>
 			<td></td>
-			<td><a class="btn btn-primary btn-xs">Ver Venta<a></td>
 		</tr>
 	
 	<?php  
