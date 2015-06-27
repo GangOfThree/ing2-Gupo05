@@ -1,5 +1,5 @@
 <html>
-
+<title>Reporte de ventas</title>
 <link href="../../Bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="../css/listado_subs_oferta.css" rel="stylesheet">
 
@@ -32,14 +32,16 @@ $registros=mysql_query("select * from venta inner join subasta on venta.sub=suba
 	<tbody>
 <!-- fijarse el cellspacing -->
 	<?php
-	$cantsubastas="0";
+	$montototal="0";
+	$montobestnid="0";
+	$cantventas="0";
 	while ($reg=mysql_fetch_array($registros))
 	{
 	?>
-	
+	    
 		<tr>
 			<td style="width:30%">
-			<img src="../<?php echo $reg['Foto']?>" style="max-width:8%">
+			<img src="<?php echo $reg['Foto']?>" style="max-width:8%">
 			<?php echo $reg['Titulo']; ?>
 			</td>
 			<td><?php echo date_format(date_create($reg['Fecha']),'d/m/Y') ?></td>
@@ -47,14 +49,47 @@ $registros=mysql_query("select * from venta inner join subasta on venta.sub=suba
 			<td>$ <?php echo  $reg['Monto']  ?></td>
 			<td>$ <?php echo  $reg['Monto_dueno'] ?></td>
 			<td></td>
-			<td><a class="btn btn-primary btn-xs">Ver Venta<a></td>
+			
 		</tr>
 	
-	<?php  
-	}
+	<?php 
+	$montototal= $montototal + $reg['Monto'];
+	$montobestnid=$montobestnid + $reg['Monto_dueno'];
+	$cantventas=$cantventas + "1";
+	}?>
+	<tr>
+      <th>Cantidad de ventas Registradas</th>
+      <th>Fecha inicio del rango solicitado</th>
+      <th>Fecha fin rango solicitado</th>
+      <th>Monto total ventas</th>
+      <th>Monto total para bestnid</th>
+	</tr>
+    <tr>
+       <td>
+          <?php echo $cantventas ?>
+       </td>
+        <td>
+       	<?php echo $_REQUEST['fechaini']  ?>
+       </td>
+       <td>
+         <?php echo $_REQUEST['fechafin']  ?>
+       </td>
+       <td>$
+         <?php echo $montototal; ?>
+       </td>
+       <td>$
+        <?php echo $montobestnid;?>
+       </td>
+    </tr>
+    <?php
 	mysql_close($conexion);
 	?>
 	</tbody>
 </table>
+<center>
+  <button type="button" class="btn btn-danger" onClick="location='../principal.php'">
+    <span class="glyphicon glyphicon-arrow-left"></span> Volver
+  </button>
+</center>
 </body>
 </html>
