@@ -73,5 +73,10 @@ $registros=mysql_query(" select * from usuario where (usuario.Fecha_reg between 
 	?>
 	</tbody>
 </table>
+<center>
+  <button type="button" class="btn btn-danger" onClick="location='../principal.php'">
+    <span class="glyphicon glyphicon-arrow-left"></span> Volver
+  </button>
+</center>
 </body>
 </html>
