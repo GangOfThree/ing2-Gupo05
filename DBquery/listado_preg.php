@@ -59,7 +59,7 @@ while ($reg=mysql_fetch_array($registros))
             '<div class="col-md-10 col-sm-10">'.
               '<div class="panel panel-default arrow left">'.
                 '<div class="panel-heading right">Pregunta hecha el '; ?>
-                  <?php echo date_format(date_create($reg['f_p']),'d/m/Y').' por '.$reg['n_p'].'</div>'.
+                  <?php echo date_format(date_create($reg['f_p']),'d/m/Y').'</div>'.
                 '<div class="panel-body">'.
                   '<div class="comment-post">'.
                     '<p>';
@@ -103,7 +103,7 @@ while ($reg=mysql_fetch_array($registros))
             '<div class="col-md-9 col-sm-9">'.
               '<div class="panel panel-default arrow left">'.
                 '<div class="panel-heading right">Respuesta hecha el '; ?>
-                  <?php echo date_format(date_create($reg['f_r']),'d/m/Y').' por '.$reg['n_r'].'</div>'.
+                  <?php echo date_format(date_create($reg['f_r']),'d/m/Y').'</div>'.
                 '<div class="panel-body">'.
                   '<div class="comment-post">'.
                     '<p>';
