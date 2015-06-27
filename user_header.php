@@ -61,8 +61,8 @@
 					<?php if(!isset($_SESSION)){session_start();} if($_SESSION['admin'] ==1){?>
 					<li class="dropdown" id="reportes"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-stats"></i> Reportes <b class="caret"></b></a>
 						<ul class="dropdown-menu" id="menucategorias">
-							<li><a href="reporteVentas.php">Reporte de ventas</a></li> 
-							<li><a href="reporteUsuarios.php">Reporte de usuarios</a></li> 
+							<li><a data-toggle="modal" href="#RepoVenta">Reporte de ventas</a></li> 
+							<li><a data-toggle="modal" href="#r">Reporte de usuarios</a></li> 
 						</ul>
 					</li>
 					<?php } ?>
@@ -76,6 +76,90 @@
 		</div>
 	</div>
 </div>
+
+
+<!--modal de reporte venta -->
+
+  <div class="modal fade" id="RepoVenta" role="dialog">
+    <div class="modal-dialog" id="uno">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+       	 <div class="modal-header">
+        	  <button type="button" class="close" data-dismiss="modal">&times;</button>
+        	  <h4 class="modal-title">Reportar Ventas</h4>
+        </div>
+       	 <form method="get" action="DBquery/conReporteVentas.php">
+        <div class="modal-body">
+           <center>
+               <form method="get" action="DBquery/conReporteVentas.php">
+                   <label for="fecha1"> seleccionar fecha inicio:</label>
+                    <br>
+                   <input id="fecha1" name="fechaini" type="date" />
+                    <br><br>
+                    <label for="fecha"> seleccionar fecha hasta:</label>
+                    <br>
+                    <input id="fecha" name="fechafin" type="date" />
+                    <br>
+         </div>
+         <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">enviar</button>
+                 </form>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+               </center>
+                </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- modal reporte registro -->
+
+
+  <div class="modal fade" id="r" role="dialog">
+    <div class="modal-dialog" >
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+       	 <div class="modal-header">
+        	  <button type="button" class="close" data-dismiss="modal">&times;</button>
+        	  <h4 class="modal-title">Reportar Usuarios Registrados</h4>
+        </div>
+       	 <form method="get" action="DBquery/conRepoUsuario.php">
+        <div class="modal-body">
+           <center>
+               <form method="get" action="DBquery/conReporteVentas.php">
+                   <label for="fecha1"> seleccionar fecha inicio:</label>
+                    <br>
+                   <input id="fecha1" name="fechaini" type="date" />
+                    <br><br>
+                    <label for="fecha"> seleccionar fecha hasta:</label>
+                    <br>
+                    <input id="fecha" name="fechafin" type="date" />
+                    <br>
+         </div>
+         <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">enviar</button>
+                 </form>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+               </center>
+                </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
 
 
 </header>
