@@ -24,7 +24,7 @@ mysql_select_db("bestnid",$conexion)
 <body >
  <div align="center" width="300"> 
 <?php
-session_start();
+// session_start();
 $userid= $_SESSION['id'];
 ?>
 
@@ -66,16 +66,21 @@ function cance(uid){
         <input class="form-control register" type="text" maxlength="30" name="Titulo" placeholder="Titulo" tabindex="1"  required>
         </div>
         <div class="form-group">
-          <label for="Agregar Descripcion">Agregar Descripcion:</label>
-          <textarea  class="form-control" placeholder="Descripcion..." maxlenght="200" rows="5" id="Agregar Descripcion" name="description"  required> </textarea>
+          <label for="AgregarDescripcion">Agregar Descripcion:</label>
+          <textarea  class="form-control" placeholder="Descripcion..." maxlenght="200" rows="5" id="AgregarDescripcion" name="description"  required> </textarea>
          </div> 
          <br><br>
          <div>
-          <label for="fecha"> seleccionar fecha fin de la subasta:</label>
+          <label for="fecha"> Seleccionar fecha fin de la subasta:</label>
           <br>
-           <input id="fecha" name="fechafin" type="date" min="2015-07-12" max="2015-07-27" required/>
+           <input id="fecha" name="fechafin" type="date" min="<?php $date=date_create("today");
+                                                                          date_add($date,date_interval_create_from_date_string("15 days"));
+                                                                          echo date_format($date,"Y-m-d");?>" 
+                                                         max="<?php $date=date_create("today");
+                                                                    date_add($date,date_interval_create_from_date_string("30 days"));
+                                                                    echo date_format($date,"Y-m-d");?>" required/>
          </div>
-         <br><br>
+         <br>
         <div class"form-group" >
         <label> seleccione una categoria  </label>
          <select name="category"  >    

@@ -16,9 +16,9 @@ function pregunta(idsubasta){
 </script>
 <script language="JavaScript"> 
 function preguntamod(idsubasta){ 
-    if (confirm('¿ir a pagina modificar?')){ 
-       document.location.href='../paginaModificacion.php?s='+idsubasta;
-    } 
+    // if (confirm('¿ir a pagina modificar?')){ 
+       window.top.location.href='../ModificarSubastaUI.php?s='+idsubasta;
+    // } 
 } 
 </script>
 

@@ -1,7 +1,8 @@
+<!DOCTYPE html>
 <?php
 #$idsubasta=$_REQUEST['id'];
 $idsub=$_REQUEST['s'];
-$conexion=mysql_connect("localhost","root","lucas") 
+$conexion=mysql_connect("localhost","root","christian") 
   or  die("Problemas en la conexion");
 
 mysql_select_db("bestnid",$conexion) 
@@ -12,7 +13,6 @@ mysql_select_db("bestnid",$conexion)
   
 
 ?>
-
 
 <html>
 
@@ -63,8 +63,8 @@ $userid= $_SESSION['id'];
 <script language="JavaScript"> 
 function cance(uid){ 
 
-        var pagina="DBquery/listado_user.php?iduser="+uid;
-       document.location.href=pagina;
+        var pagina="user_profile.php";
+       window.top.location.href=pagina;
     
 } 
 </script>
@@ -72,7 +72,7 @@ function cance(uid){
 <script src="js/fileinput.min.js" type="text/javascript"></script>
 </head>
 
-<body>
+<body style="background-color:white">
   
     <div id="registerForm" class="container">
       <center><h2>Modificar</h2></center>
@@ -110,11 +110,13 @@ function cance(uid){
   
 <div class="container">
        <div class="form-group">
-           <center> <div id="caja" >
+           <center> <div id="caja" style="width:30%">
                 <label>Imagen subasta Actual:</label>
                     <br>
-                    <center><img src="<?php echo $arreglo['Foto']?>" class="file-preview-frame" > 
-                    <br><br>
+                    <!-- <center> -->
+                    <img src="<?php echo $arreglo['Foto']?>" class="file-preview-frame" style="position:relative;left:10%" > <!-- </center> -->
+                    <br><br><center>
+                    <br><br><br><br><br><br><br><br>
                    <label>Seleccionar nueva imagen:</label>
                      <input id="file-3" type="file" name="imagenes[]" >
                         <script>
@@ -124,7 +126,8 @@ function cance(uid){
                         fileType: "any",
                         showUpload:false,
                          });
-                        </script></center>  
+                        </script></center>
+                <br>          
                 <div id="separartop">
                  <center><a  class="btn btn-default searchButton" onClick="cance(<?php echo $userid?>)"  >Cancelar</a> <button  class="btn btn-default searchButton"  >Modificar</button></center>
                  <center></center>

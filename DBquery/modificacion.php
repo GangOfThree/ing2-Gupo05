@@ -48,9 +48,9 @@ mysql_close($conexion);
 session_start();
 
 
-$mensaje = "Modificacion exitosa, click en aceptar para volver a ver el listado";
+$mensaje = "Modificacion exitosa!";
 echo "<script>";
 echo "alert('$mensaje');";  
-echo 'window.location = "listado_user.php?userid='.$_SESSION['id'].'";';
+echo 'window.top.location.href = "../user_profile.php";';
 echo "</script>";
 ?>

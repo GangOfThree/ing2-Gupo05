@@ -124,8 +124,10 @@ $reg=mysql_fetch_array($registros);
 		<div class="col-lg-12">
 			<div class="container-fluid material_card transparent">
 				<h1 class="text-center">Comentarios para la subasta</h1>
+				<?php if(isset($_SESSION['id']) && $_SESSION['id']!=$reg['user']){ ?>
 				<?php require_once("DBquery/comentar.php") ?>
 				<hr>
+				<?php } ?>
 				<?php require_once("DBquery/listado_preg.php") ?>
 			</div>
 		</div>

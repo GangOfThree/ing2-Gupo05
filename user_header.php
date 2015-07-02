@@ -164,7 +164,7 @@
 
 </header>
 <body>
-<a href="paginaAltaSubasta.php"><div class="materialButton" data-toggle="tooltip" data-placement="left" title="Agregar una nueva subasta!"><img src="resources/add.png" id="add"></div></a>
+<a href="AltaSubastaUI.php"><div class="materialButton" data-toggle="tooltip" data-placement="left" title="Agregar una nueva subasta!"><img src="resources/add.png" id="add"></div></a>
 <div id="back" class="container"></div>
 </body>
 </html>

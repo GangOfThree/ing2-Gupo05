@@ -27,7 +27,7 @@ $idsub=$_REQUEST['idsubasta'];
                 <div class="widget-area no-padding blank">
                 <div class="status-upload">
                   <form method="post" action=<?php echo 'DBquery/alta_pregunta.php?idsubasta='.$idsub;?>>
-                    <textarea rows=10 cols=100 name="pregunta" style="width:100%; max-width:100%; height:50px" placeholder="Ingrese su pregunta..." ></textarea> <!-- Queda mas lindo con ese tamaño de columna y fila porque queda abajo el boton de publicar -->
+                    <textarea rows=10 cols=100 name="pregunta" style="width:100%; max-width:100%; height:50px" placeholder="Ingrese su pregunta..." required></textarea> <!-- Queda mas lindo con ese tamaño de columna y fila porque queda abajo el boton de publicar -->
                     <p class="text-right"><button type="submit" class="btn btn-primary"><i class="fa fa-share"></i> Publicar pregunta</button></p>
                   </form>
                 </div><!-- Status Upload  -->

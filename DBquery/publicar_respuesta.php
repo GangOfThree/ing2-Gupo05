@@ -1,6 +1,5 @@
 <?php
 
-if($_REQUEST['respuesta']!= ""){
 session_start();
 include("DBconnect.php");
 $idsub=$_REQUEST['idsubasta'];
@@ -22,8 +21,17 @@ mysql_query("UPDATE pregunta SET respuesta=$idrespuesta where ID_PREG=$idpreg");
 
 mysql_query("INSERT INTO `pregunta` (`ID_PREG`, `Contenido`, `Fecha`, `user`, `sub`, `respuesta`, `eliminado`) VALUES (NULL, '$contenido', CURRENT_DATE(), '$usuario', '$idsub', NULL, '0')");
 
-} else{
 	// Mensaje de "Ingrese una respuesta donde dice 'Responder esta pregunta...' antes de hacer clic en el boton 'Responder'" mas redireccionamiento
-}
+
+
+
+mysql_close($conexion);
+$mensaje = " respuesta enviada!";
+
+
+echo "<script>";
+echo "alert('$mensaje');";  
+echo 'window.location = "../paginaMostrarSubasta.php?idsubasta='.$_REQUEST['idsubasta'].'"';
+echo "</script>";
 
 ?>
