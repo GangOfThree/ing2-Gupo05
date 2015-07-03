@@ -15,7 +15,7 @@
 <script src="js/fileinput.min.js" type="text/javascript"></script>
 <link href="css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 </head>
-
+<?php   include("/DBquery/DBGetCategorias");?>
 <header>
 	
 <div id="header" class="navbar navbar-inverse navbar-fixed-top">
@@ -31,18 +31,15 @@
 					<!--<li class="active"><a href="/">Home</a></li>-->
 					<li class="dropdown" id="categorias"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Categorias </b><b class="caret"></b></a>
 							<ul class="dropdown-menu" id="menucategorias">
-								<li><a href="searchbycategory.php?busqueda=Antigüedades">Antigüedades</a></li> 
-								<li><a href="searchbycategory.php?busqueda=Electrodomesticos">Electrodomesticos</a></li>
-								<li><a href="searchbycategory.php?busqueda=Electronica">Electrónica</a></li>
-								<li><a href="searchbycategory.php?busqueda=Inmuebles">Inmuebles</a></li>
-								<li><a href="searchbycategory.php?busqueda=Juegos y juguetes">Juegos y juguetes</a></li> 
-								<li><a href="searchbycategory.php?busqueda=Mueble">Muebles</a></li> 
-								<li><a href="searchbycategory.php?busqueda=Musica">Música</a></li> 
-								<li><a href="searchbycategory.php?busqueda=Peliculas y cine">Peliculas y cine</a></li> 
-								<li><a href="searchbycategory.php?busqueda=Ropa">Ropa</a></li>
-								<li><a href="searchbycategory.php?busqueda=Servicios">Servicios</a></li>
-								<li><a href="searchbycategory.php?busqueda=Vehiculos">Vehículos</a></li>
-								<li><a href="searchbycategory.php?busqueda=Otros">Otros...</a></li> 								
+               <?php while($cate=mysql_fetch_array($registros)){
+                  ?>
+                   <li><a href=<?php echo "searchbycategory.php?busqueda=".$cate['nombreCat'] ?> ><?php echo $cate['nombreCat']?></a></li>
+                   <?php } ?>
+                  <?php if($_SESSION['admin']==1){ ?>
+                  <li class="divider"></li>
+                  <li><a data-toggle="modal" href="#cat">agregar categoria</a></li>
+                  <?php } ?>
+											
 							</ul>
 					</li>
 					<form action="searchbyname.php" class="navbar-form navbar-right" id="busqueda">
@@ -113,6 +110,45 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+<!--agregar categoria-->
+
+
+  <div class="modal fade" id="cat" role="dialog">
+    <div class="modal-dialog" id="uno">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Agregar categoria</h4>
+        </div>
+          <form method="get" action="DBquery/altaCategoria.php">
+        <div class="modal-body">
+          <center>
+                   <label for="incate"> Escriba un nombre de categoria:</label>
+                    <br>
+                   <input  name="categoria"  id="incate" />
+                    <br><br>
+                  </center>
+         </div>
+         <div class="modal-footer">
+                <button type="submit" class="btn btn-danger">Agregar</button>
+                 </form>
+                  <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+               </center>
+                </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 
 
 <!-- modal reporte registro -->

@@ -13,7 +13,7 @@
 <script src="js/manejoPopups.js"></script>
 <link href="css/header.css" rel="stylesheet">
 </head>
-
+<?php include("/DBquery/DBGetCategorias") ?>
 <header>
 	
 <div id="header" class="navbar navbar-inverse navbar-fixed-top">
@@ -29,7 +29,11 @@
 					<!--<li class="active"><a href="/">Home</a></li>-->
 					<li class="dropdown" id="categorias"><a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Categorias </b><b class="caret"></b></a>
 							<ul class="dropdown-menu" id="menucategorias">
-								<li><a href="searchbycategory.php?busqueda=Antigüedades">Antigüedades</a></li> 
+                              <?php while($cate=mysql_fetch_array($registros)){
+                 				 ?>
+              				    <li><a href=<?php echo "searchbycategory.php?busqueda=".$cate['nombreCat'] ?> ><?php echo $cate['nombreCat']?></a></li>
+              				    <?php }?> 
+							<!--	<li><a href="searchbycategory.php?busqueda=Antigüedades">Antigüedades</a></li> 
 								<li><a href="searchbycategory.php?busqueda=Electrodomesticos">Electrodomesticos</a></li>
 								<li><a href="searchbycategory.php?busqueda=Electronica">Electrónica</a></li>
 								<li><a href="searchbycategory.php?busqueda=Inmuebles">Inmuebles</a></li>
@@ -41,6 +45,7 @@
 								<li><a href="searchbycategory.php?busqueda=Servicios">Servicios</a></li>
 								<li><a href="searchbycategory.php?busqueda=Vehiculos">Vehículos</a></li>
 								<li><a href="searchbycategory.php?busqueda=Otros">Otros...</a></li> 								
+							-->
 							</ul>
 					</li>
 					<form action="searchbyname.php" class="navbar-form navbar-right" id="busqueda">

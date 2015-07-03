@@ -52,6 +52,7 @@ function cance(uid){
     
 } 
 </script>
+<?php   include("/DBquery/DBGetCategorias");?>
 
 <script src="js/fileinput.min.js" type="text/javascript"></script>
 </head>
@@ -84,7 +85,12 @@ function cance(uid){
         <div class"form-group" >
         <label> seleccione una categoria  </label>
          <select name="category"  >    
-                <option value="2"> Electrodomesticos</option>
+           <?php while($cate=mysql_fetch_array($registros)){
+                  ?>
+
+                  <option value=<?php echo $cate['ID_CAT'] ?> > <?php echo $cate['nombreCat']?></option>
+                  <?php }?>
+      <!--          <option value="2"> Electrodomesticos</option>
                 <option value="3" > Electronica</option>
                 <option value="4" > Inmuebles</option>
                 <option value="5" > Juegos y juguetes</option>
@@ -94,7 +100,7 @@ function cance(uid){
                 <option value="9" > Ropa</option>
                 <option value="10" > Servicios</option>
                 <option value="11" > Vehiculos</option>
-                <option value="1" selected="selected" >  Otros..</option>
+                <option value="1" selected="selected" >  Otros..</option>-->
          </select>
          <br></br>
       </div>

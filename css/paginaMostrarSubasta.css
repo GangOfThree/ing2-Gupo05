@@ -8,6 +8,9 @@
 	/*box-shadow: 0 4px 8px rgba(0,0,0,.34);*/
 	opacity: 1;
 }
+#idsubastaOfertada{
+	height: 200px;
+}
 #imagenProducto{
 	/*display: block;*/
 	position: relative;

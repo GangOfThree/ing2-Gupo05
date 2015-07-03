@@ -1,0 +1,14 @@
+<?php
+include("DBquery/DBconnect.php");
+$conexion=mysql_connect($host,$user,$pw)
+	or  die("Problemas en la conexion");
+
+mysql_select_db("bestnid",$conexion) 
+	or  die("Problemas en la selección de la base de datos");
+
+$registros=mysql_query("select * from categoria ",$conexion) or
+	die("Problemas en el select:".mysql_error());
+
+
+
+?>

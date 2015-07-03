@@ -33,6 +33,23 @@ mysql_select_db("bestnid",$conexion)
 $registros=mysql_query("select * from subasta inner join categoria on subasta.cate=categoria.ID_CAT  where subasta.ID_SUB=$idsub",$conexion) or
 	die("Problemas en el select:".mysql_error());
 
+$canto=mysql_query("select user, count(*) as cant_or 
+                     from oferta
+                     where  $_SESSION[id]=user",$conexion) or
+	die("Problemas en el select:".mysql_error());
+
+
+#ofertas de el usuario logueado con la subasta actual
+$consulo=mysql_query("select *  from oferta where oferta.user=$_SESSION[id] and oferta.sub=$_REQUEST[idsubasta]",$conexion) or
+	die("Problemas en el select:".mysql_error());
+$conto="0";
+$tempo="basura";
+while ($tmp=mysql_fetch_array($consulo))
+	{
+  $conto=$conto+"1";
+  $tempo=$tmp['Motivo'];
+}
+
 $reg=mysql_fetch_array($registros); 
 ?>
 
@@ -78,8 +95,10 @@ $reg=mysql_fetch_array($registros);
 				<p><b>Categoría:</b> <?php echo $reg['nombreCat'] ?></p>
 			</div>
 	    </div>
-
-	    <?php if(isset($_SESSION['id']) && $_SESSION['id']!=$reg['user']){ ?>
+        
+	    <?php 
+        
+	    if((isset($_SESSION['id']) & ($_SESSION['id']!=$reg['user']) & ($conto=="0"))){ ?>
 	    <div class="col-lg-3">
 				<div class="container-fluid material_card" id="detalleSubasta">
 					
@@ -91,8 +110,9 @@ $reg=mysql_fetch_array($registros);
 						                    <div class="horizontal-line"></div>
 						                    <div id="formularioOferta" class="container" style="width:100%">
 						                  	<div class="form-group">
-						                      <label for="monto">Monto de la subasta:</label>
+						                      <label for="monto">Monto de la subasta en $:</label>
 						                       <br>
+						                       
 						                      <input type="number" class="form-control" id="monto" name="Monto" value="1.00" placeholder="Monto" required>
 						                   </div>
 						           
@@ -116,8 +136,25 @@ $reg=mysql_fetch_array($registros);
 
 				</div>
 		</div>
-		<?php } ?>
+		<?php } else if($conto!="0"){ 
+		?><!-- detalles -->
+        <div  class="col-lg-3">
+            <div class="container-fluid material_card" id="idsubastaOfertada">
+            	<div class="container-fluid">
+                <h2>usted ya oferto en esta subasta</h2>
+                <br>
+                <center>
+                <button class="btn btn-danger" data-toggle="modal" data-target="#p">detalles</button>      
+                </center>
+                </div>
+             </div>
+        </div>
 	</div>
+	<?php }?>
+
+
+
+
 	<br>
 	<br>
 	<div class="row">
@@ -136,6 +173,38 @@ $reg=mysql_fetch_array($registros);
 	<br>
 	<br>
 </body>
+
+<!--modal de detalles ofertas-->
+ <div class="modal fade" id="p" role="dialog">
+    <div class="modal-dialog" >
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+       	 <div class="modal-header">
+        	  <button type="button" class="close" data-dismiss="modal">&times;</button>
+        	  <h4 class="modal-title">Detalles de la oferta enviada:</h4>
+        </div>
+       	  <div class="modal-body">
+       	  	<label>Motivo de la subasta:</label>
+           <h6><?php echo $tempo?></h>  
+           
+         </div>
+         <div class="modal-footer">
+                
+              <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
+           
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
 
 
 <?php

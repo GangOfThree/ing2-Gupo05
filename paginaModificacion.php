@@ -2,7 +2,7 @@
 <?php
 #$idsubasta=$_REQUEST['id'];
 $idsub=$_REQUEST['s'];
-$conexion=mysql_connect("localhost","root","christian") 
+$conexion=mysql_connect("localhost","root","lucas") 
   or  die("Problemas en la conexion");
 
 mysql_select_db("bestnid",$conexion) 
@@ -13,6 +13,7 @@ mysql_select_db("bestnid",$conexion)
   
 
 ?>
+<?php   include("/DBquery/DBGetCategorias");?>
 
 <html>
 
@@ -92,8 +93,12 @@ function cance(uid){
         <label> seleccione una categoria si desea modificar </label>
          <select name="category"  >    
                 <!-- <option value="<?php echo $arreglo['ID_CAT'] ?>"> <?php echo $arreglo['nombreCat'] ?> </option>    <input class="form-control register" type="text" maxlenght="200" name="description" placeholder="descripcion" tabindex="2" value="<?php echo $arreglo['Descripcion'] ?>" >
-       -->
-                <option value="2"> Electrodomesticos</option>
+       --> <?php while($cate=mysql_fetch_array($registros)){
+                  ?>
+
+                  <option value=<?php echo $cate['ID_CAT'] ?> > <?php echo $cate['nombreCat']?></option>
+                  <?php }?>
+                <!--<option value="2"> Electrodomesticos</option>
                 <option value="3" > Electronica</option>
                 <option value="4" > Inmuebles</option>
                 <option value="5" > Juegos y juguetes</option>
@@ -103,7 +108,7 @@ function cance(uid){
                 <option value="9" > Ropa</option>
                 <option value="10" > Servicios</option>
                 <option value="11" > Vehiculos</option>
-                <option value="1" selected="selected" >  Otros..</option>
+                <option value="1" selected="selected" >  Otros..</option>-->
          </select>
          <br></br>
       </div>
