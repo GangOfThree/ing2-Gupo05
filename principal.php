@@ -9,7 +9,7 @@
 	<?php 
 		session_start();
 		if(!isset($_SESSION['id'])){
-			require_once('header.html');
+			require_once('header.php');
 		}
 		else{
 			require_once('user_header.php');
@@ -25,6 +25,10 @@
 			<div class="container-fluid" id="selector">
 				<ul class="nav" id="ordenes">
 					<li class="active" onclick="activar(this)"><a href="#"><i class="glyphicon glyphicon-time" style="color:inherit;"></i> Últimas subastas</a></li>
+				</ul>
+				<br>
+				<ul class="nav" id="ordenes">
+                    <li class="active" onclick="location='paginaAdmCategorias.php'"><a href="#"> Administrar categorias</a></li>
 				</ul>
 			</div>
 		</div>
