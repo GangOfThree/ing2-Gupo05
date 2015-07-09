@@ -81,7 +81,7 @@ while ($reg=mysql_fetch_array($registros))
                      </form>
                   <?php
                 }} else{
-                    if ( ($_SESSION['id']==$reg['p_d']) && ($reg['p_eli']==0) ){?>
+                    if ( (($_SESSION['id']==$reg['p_d']) || ($_SESSION['id']==$reg['s_d'])) && ($reg['p_eli']==0) ){?>
                       <p class="text-right"><a href="#" class="btn btn-default btn-sm" onclick=preguntaeli(<?php echo $reg['i_p'];?>)><i class="fa fa-trash"></i> Eliminar</a></p>
                     <?php
                     }
