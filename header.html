@@ -95,31 +95,8 @@
 				</div>
 				<center><input type="button" onclick="return verificarUsuario();" class="btn btn-default searchButton" id="signButton"  value="Iniciar sesión" disabled></center>
 				<hr>
-				<center><button type="button" class="btn btn-default" data-toggle="modal" data-target="#recuperacontra">Olvide mi contraseña</button></center>
-				
+				<a id="iforget" href="#">Olvidé mi contraseña...</a>
 			</form>
-			<div class="modal fade" id="recuperacontra" role="dialog">
-    				<div class="modal-dialog">
-    
-     					<!-- Modal content -->
-      					<div class="modal-content">
-        					<div class="modal-header">
-          						<button type="button" class="close" data-dismiss="modal">&times;</button>
-       	   						<h4 class="modal-title">Recuperar contraseña</h4>
-        					</div>
-        					<div class="modal-body">
-        						<form name="nonUser" method="post" action="<?php echo 'DBquery/verificar_mail.php';?>"> 
-        							<input type="email" class="form-control register" name="usuarioMail" placeholder="Ingrese su mail..." maxlength="70" required data-toggle="popover" data-placement="right" data-content="Ingrese el mail con el que se registro en el sitio"><br>
-        							<button type="submit" class="btn btn-info">Confirmar</button>
-        						</form>
-        					</div>
-        					<div class="modal-footer">
-          						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        					</div>
-      					</div>
-      
-    				</div>
-  				</div> 
 		</div>
 		<br>
 		<br>
