@@ -28,8 +28,8 @@ $conexion=mysql_connect($host,$user,$pw)
 mysql_select_db("bestnid",$conexion) 
   or  die("Problemas en la selección de la base de datos");
 
-$registros=mysql_query("SELECT distinct p.ID_PREG as i_p, r.ID_PREG as i_r, p.Nombre as n_p, r.Nombre as n_r, p.Fecha as f_p, r.Fecha as f_r, p.Contenido as c_p, r.Contenido as c_r, p.dueno as s_d, p.usuario as p_d, p.eliminado as p_eli, r.eliminado as r_eli from (select distinct ID_PREG, Nombre, Contenido, Fecha, p2.user as usuario, sub as subasta, s1.user as dueno, respuesta, eliminado 
-from pregunta as p2 inner join usuario u1 on p2.user=u1.ID_USR inner join subasta as s1 on p2.sub=s1.ID_SUB where s1.user!=p2.user and s1.ID_SUB=$idsub) AS p left join (select distinct ID_PREG, Nombre, Contenido, Fecha, p3.user as usuario, sub as subasta, s2.user as dueno, respuesta, eliminado 
+$registros=mysql_query("SELECT distinct p.ID_PREG as i_p, r.ID_PREG as i_r, p.Nombre as n_p, r.Nombre as n_r, p.Fecha as f_p, r.Fecha as f_r, p.Contenido as c_p, r.Contenido as c_r, p.dueno as s_d, p.usuario as p_d, p.eliminado as p_eli, r.eliminado as r_eli, p.activo as act from (select distinct ID_PREG, Nombre, Contenido, Fecha, p2.user as usuario, sub as subasta, s1.user as dueno, respuesta, eliminado, activo 
+from pregunta as p2 inner join usuario u1 on p2.user=u1.ID_USR inner join subasta as s1 on p2.sub=s1.ID_SUB where s1.user!=p2.user and s1.ID_SUB=$idsub and s1.activo=1) AS p left join (select distinct ID_PREG, Nombre, Contenido, Fecha, p3.user as usuario, sub as subasta, s2.user as dueno, respuesta, eliminado 
 from pregunta as p3 inner join usuario u2 on p3.user=u2.ID_USR inner join subasta as s2 on p3.sub=s2.ID_SUB where s2.user=p3.user and s2.ID_SUB=$idsub) AS r on p.respuesta=r.ID_PREG order by p.Fecha, p.ID_PREG",$conexion) or
   die("Problemas en el select:".mysql_error());
 
@@ -72,7 +72,7 @@ while ($reg=mysql_fetch_array($registros))
                    '</div>'.
                   '<br>';
                   ?>
-                  <?php if( ($_SESSION['id']==$reg['s_d']) && (!isset($reg['i_r']) ) ){
+                  <?php if( (($_SESSION['id']==$reg['s_d']) && (!isset($reg['i_r']) )) && ($reg['act']==1) ){
                     if ($reg['p_eli']==0 ){?>
                      <form method="post" action="<?php echo 'DBquery/publicar_respuesta.php?idsubasta='.$idsub.'&idpreg='.$reg['i_p'];?>">
                      
