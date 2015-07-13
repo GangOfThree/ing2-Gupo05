@@ -95,10 +95,10 @@
 				</div>
 				<center><input type="button" onclick="return verificarUsuario();" class="btn btn-default searchButton" id="signButton"  value="Iniciar sesión" disabled></center>
 				<hr>
-				<center><button type="button" class="btn btn-default" data-toggle="modal" data-target="#recuperacontra">Olvide mi contraseña</button></center>
-				
+				<a id="iforget" data-toggle="modal" href="#recuperacontra">Olvidé mi contraseña...</a>
 			</form>
-			<div class="modal fade" id="recuperacontra" role="dialog">
+
+             <div class="modal fade" id="recuperacontra" role="dialog">
     				<div class="modal-dialog">
     
      					<!-- Modal content -->
@@ -110,7 +110,7 @@
         					<div class="modal-body">
         						<form name="nonUser" method="post" action="<?php echo 'DBquery/verificar_mail.php';?>"> 
         							<input type="email" class="form-control register" name="usuarioMail" placeholder="Ingrese su mail..." maxlength="70" required data-toggle="popover" data-placement="right" data-content="Ingrese el mail con el que se registro en el sitio"><br>
-        							<button type="submit" class="btn btn-info">Confirmar</button>
+        							<button type="submit" class="btn btn-danger">Confirmar</button>
         						</form>
         					</div>
         					<div class="modal-footer">
@@ -120,6 +120,7 @@
       
     				</div>
   				</div> 
+
 		</div>
 		<br>
 		<br>
