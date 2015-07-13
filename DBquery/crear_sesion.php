@@ -22,6 +22,7 @@ else{
 		$_SESSION['mail']=$reg['Mail'];
 		$_SESSION['password']=$reg['Password'];
 		$_SESSION['admin']=$reg['Admin'];
+		$_SESSION['userActivo']=$reg['userActivo'];
 		echo 0;
 	}
 	else{

@@ -11,6 +11,7 @@
 <script src="js/validacion_registro.js"></script>
 <script src="js/validacion_sesion.js"></script>
 <script src="js/manejoPopups.js"></script>
+<script src="js/recuperar_password.js"></script>
 <link href="css/header.css" rel="stylesheet">
 </head>
 <?php include("/DBquery/DBGetCategorias") ?>
@@ -98,30 +99,30 @@
 				<a id="iforget" data-toggle="modal" href="#recuperacontra">Olvidé mi contraseña...</a>
 			</form>
 
-             <div class="modal fade" id="recuperacontra" role="dialog">
-    				<div class="modal-dialog">
-    
-     					<!-- Modal content -->
-      					<div class="modal-content">
-        					<div class="modal-header">
-          						<button type="button" class="close" data-dismiss="modal">&times;</button>
-       	   						<h4 class="modal-title">Recuperar contraseña</h4>
-        					</div>
-        					<div class="modal-body">
-        						<form name="nonUser" method="post" action="<?php echo 'DBquery/verificar_mail.php';?>"> 
-        							<input type="email" class="form-control register" name="usuarioMail" placeholder="Ingrese su mail..." maxlength="70" required data-toggle="popover" data-placement="right" data-content="Ingrese el mail con el que se registro en el sitio"><br>
-        							<button type="submit" class="btn btn-danger">Confirmar</button>
-        						</form>
-        					</div>
-        					<div class="modal-footer">
-          						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-        					</div>
-      					</div>
-      
-    				</div>
-  				</div> 
 
 		</div>
+        <div class="modal fade" id="recuperacontra" role="dialog">
+				<div class="modal-dialog">
+
+ 					<!-- Modal content -->
+  					<div class="modal-content">
+    					<div class="modal-header">
+      						<button type="button" class="close" data-dismiss="modal">&times;</button>
+   	   						<h4 class="modal-title">Recuperar contraseña</h4>
+    					</div>
+    					<div class="modal-body">
+    						<form name="nonUser"> 
+    							<input type="email" class="form-control register" id="recuperarUsuarioMail" name="recuperarUsuarioMail" onkeyup="mostrarAyudaRecuperar()" placeholder="Ingrese su mail..." maxlength="70" required data-toggle="popover" data-placement="right" data-content="Ingrese el mail con el que se registro en el sitio"><br>
+    						</form>
+    						<button id="botonRecuperar" onclick="verificarMailARecuperar()" class="btn btn-danger" disabled>Confirmar</button>
+    					</div>
+    					<div class="modal-footer">
+      						<button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+    					</div>
+  					</div>
+  
+				</div>
+		</div> 
 		<br>
 		<br>
 	</div>
@@ -196,5 +197,8 @@
 
 <body>
 	<div id="back" class="container"></div>
+	<div class="container-fluid helpButton">
+		<span class="content-help"><h4><img id="help-icon" src="resources/question.png"><span id="text-help"> ¿Necesitás ayuda?</span></h4></span>
+	</div>
 </body>
 </html>

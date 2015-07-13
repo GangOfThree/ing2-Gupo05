@@ -2,8 +2,11 @@
 <?php
 #$idsubasta=$_REQUEST['id'];
 $idsub=$_REQUEST['s'];
-$conexion=mysql_connect("localhost","root","lucas") 
+include("DBquery/DBconnect.php");
+$conexion=mysql_connect($host,$user,$pw) 
   or  die("Problemas en la conexion");
+// $conexion=mysql_connect("localhost","root","lucas") 
+//   or  die("Problemas en la conexion");
 
 mysql_select_db("bestnid",$conexion) 
   or  die("Problemas en la selección de la base de datos");

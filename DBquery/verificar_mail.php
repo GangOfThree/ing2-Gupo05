@@ -1,5 +1,5 @@
 <?php
-	$mail=$_REQUEST['usuarioMail'];
+	$userMail=$_REQUEST['usuarioMail'];
 	include("DBconnect.php");
 	$conexion=mysql_connect($host,$user,$pw)
 	or die("Problemas en la conexion");
@@ -7,14 +7,14 @@
 	mysql_select_db("bestnid",$conexion)
 	or die("Problemas en la seleccion de la base de datos");
 
-	$registros=mysql_query("select Mail from usuario where Mail='$_REQUEST[usuarioMail]'")
+	$registros=mysql_query("select Mail from usuario where Mail='$userMail'")
 	or die("Problemas en el select:".mysql_error());
 
-	$reg=mysql_fetch_array($registros);
-	if(isset($reg['mail'])){
-		echo "Se ha enviado una contraseña temporal a su mail que expirara en 24 horas";
+	$total=mysql_num_rows($registros);
+	if($total==0){
+		echo 0;
 	}
-	else{ 
-		echo "Este mail no existe";
+	else{
+		echo 1;
 	}
 ?>

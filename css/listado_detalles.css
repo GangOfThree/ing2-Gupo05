@@ -1,0 +1,10 @@
+.material_card{
+	background-color: white;
+	box-shadow: 0 4px 8px rgba(0,0,0,.34);
+	transition: background-color 0.5s;
+}
+.mailhead{
+	width:100%;
+	background-color: #d4263c;
+	color:white;
+}

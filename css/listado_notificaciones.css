@@ -1,0 +1,60 @@
+.mail-text {
+  width:900px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.label{
+	border-radius: 3px;
+	display: inline-block;
+	padding: 2px 4px;
+	font-size: 11.844px;
+	font-weight: bold;
+	line-height: 14px;
+	color: #ffffff;
+	vertical-align: baseline;
+	white-space: nowrap;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #999999;
+}
+.mail-field{
+	border-radius: 5px;
+	border-width: 1px;
+	border-style: solid;
+	border-color: #e9e9e9;
+}
+.autoFixed{
+	white-space: nowrap;
+	width: 1%;
+}
+.mail-head{
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	font-weight: bold;
+	color: #ffffff;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #999999;
+	width: 100%;
+}
+.mail-from{
+	border-radius: 3px;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #999999;
+	color: #ffffff;
+}
+
+a{
+	color:black;
+}
+a:hover{
+	color:black;
+}
+a:active{
+	color:black;
+}
+a:link{
+	color:black;
+}
+tr{
+	cursor: pointer;
+}

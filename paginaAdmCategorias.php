@@ -1,16 +1,13 @@
 <!DOCTYPE html>
-<?php
-session_start();
-require_once('user_header.php');
-?>
 <html>
 
 <head>
 <link href="css/paginaMostrarSubasta.css" rel="stylesheet">
-	<script src="../Bootstrap/dist/js/jquery-1.11.2.min.js"></script>
-	<script src="../Bootstrap/dist/js/bootstrap.min.js"></script>
-  <link href="css/principal.css" rel="stylesheet">
-  <script src="js/principal.js"></script>
+
+<?php
+session_start();
+require_once('user_header.php');
+?>
 <?php   include("/DBquery/DBGetCategorias");?>
 
 </head>
@@ -26,7 +23,7 @@ require_once('user_header.php');
                     <h4>Categorias</h4>
                         <thead>
                           <tr>
-                            <th>Nunero categoria</th>
+                            <th>Número categoria</th>
                             <th>Nombre categoria</th>
                             
                           </tr>
@@ -56,18 +53,20 @@ require_once('user_header.php');
 
 
                      <br>
-                  <button class="btn btn-danger" data-toggle="modal" data-target="#agregar">agregar</button>
-                  <button class="btn btn-danger"data-toggle="modal" data-target="#modificar">Modificar</button>
-                  <button class="btn btn-danger" data-toggle="modal" data-target="#eliminar">eliminar</button>
+                  <button class="btn btn-danger" data-toggle="modal" data-target="#agregar"><i class="glyphicon glyphicon-plus-sign"></i> Agregar</button>
+                  <button class="btn btn-danger"data-toggle="modal" data-target="#modificar"><i class="glyphicon glyphicon-edit"></i> Modificar</button>
+                  <button class="btn btn-danger" data-toggle="modal" data-target="#eliminar"><i class="glyphicon glyphicon-trash"></i> Eliminar</button>
 
                    <br><br>
     				<button type="button" class="btn btn-danger" onClick="location='principal.php'">
    						 <span class="glyphicon glyphicon-arrow-left"></span> Volver a la pagina principal
  					 </button>
+           <br>
+           <br>
  			 </center>
                </div>
             </div>
-		</div>
+    </div>
 		<div class="col-lg-1"></div>
 	</div>>
 

@@ -11,12 +11,42 @@
 <script src="js/validacion_registro.js"></script>
 <script src="js/validacion_sesion.js"></script>
 <script src="js/manejoPopups.js"></script>
+<script src="js/notifications.js"></script>
 <link href="css/header.css" rel="stylesheet">
 <script src="js/fileinput.min.js" type="text/javascript"></script>
 <link href="css/fileinput.min.css" media="all" rel="stylesheet" type="text/css" />
 </head>
 <?php   include("/DBquery/DBGetCategorias");?>
+
+
+<?php if($_SESSION['userActivo']==0){ ?>
+<script src="js/active-desactive_account.js"></script>
+<?php } ?>
+
 <header>
+
+<!-- alert de logueo con cuenta desactivada -->
+<div class="modal fade" data-backdrop="static" id="inactiveAccount" role="dialog">
+    <div class="modal-dialog" style="width:30%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title"> Aviso</h4>
+            </div>
+            <div class="modal-body">
+                <center><p><b>Ingresaste con una cuenta inactiva<br>¿que deseas hacer?</b></p></center>
+            </div>
+            <div class="modal-footer">
+                <center>
+                <button id="activeAccountButton" type="button" class="btn btn-primary" data-dismiss="modal">Activar la cuenta</button>
+                <button id="getOutButton" type="button" class="btn btn-default" data-dismiss="modal">Salir de la cuenta</button>
+                </center>
+            </div>
+        </div>
+    </div>
+</div>
+<!--  -->
+
+
 	
 <div id="header" class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
@@ -37,7 +67,8 @@
                    <?php } ?>
                   <?php if($_SESSION['admin']==1){ ?>
                   <li class="divider"></li>
-                  <li><a data-toggle="modal" href="#cat">agregar categoria</a></li>
+                  <!-- <li><a data-toggle="modal" href="#cat">agregar categoria</a></li> -->
+                  <li><a href="paginaAdmCategorias.php">Administrar Categorias</a></li>
                   <?php } ?>
 											
 							</ul>
@@ -62,10 +93,32 @@
 							<li><a data-toggle="modal" href="#r">Reporte de usuarios</a></li> 
 						</ul>
 					</li>
-					<?php } ?>
+          <li id="notificaciones" style="right:22%" data-toggle="tooltip" data-placement="bottom" title="Notificaciones">
+              <a href="Inbox.php">
+                <div>
+                  <i class="glyphicon glyphicon-bell"></i>
+                  <div class="counter" id="count" style="left:76.4%"></div>
+                </div>
+              </a>
+          </li>
+
+          <?php } 
+          else{ ?>
+
+            <li id="notificaciones" style="right:25.4%" data-toggle="tooltip" data-placement="bottom" title="Notificaciones">
+                <a href="Inbox.php">
+                  <div>
+                    <i class="glyphicon glyphicon-bell"></i>
+                    <div class="counter" id="count" style="left:73%"></div>
+                  </div>
+                </a>
+            </li>
+
+          <?php } ?>
+
 					<div id="userName">
 					<li id="userlink"><span><a class="ex1" href="user_profile.php"><i class="glyphicon glyphicon-user"></i>
-					<?php if(!isset($_SESSION)){session_start();} echo $_SESSION['nombre'];echo " "; echo $_SESSION['apellido']; ?></a></span></li></div>
+					<span id="userNyAp"><?php if(!isset($_SESSION)){session_start();} echo $_SESSION['nombre'];echo " "; echo $_SESSION['apellido']; ?></span></a></span></li></div>
 					<li id="closelink"><span><a class="ex1" href="DBquery/cerrar_sesion.php"><i class="glyphicon glyphicon-off"></i> Cerrar Sesión</a></span><li>
 				</ul>
 			<!--</div>-->
@@ -202,5 +255,8 @@
 <body>
 <a href="AltaSubastaUI.php"><div class="materialButton" data-toggle="tooltip" data-placement="left" title="Agregar una nueva subasta!"><img src="resources/add.png" id="add"></div></a>
 <div id="back" class="container"></div>
+<div class="container-fluid helpButton">
+  <span class="content-help"><h4><img id="help-icon" src="resources/question.png"><span id="text-help"> ¿Necesitás ayuda?</span></h4></span>
+</div>
 </body>
 </html>

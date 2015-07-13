@@ -17,6 +17,7 @@ td{
   box-shadow: 0 4px 8px rgba(0,0,0,.34);
   width:190px;
   height: 264px;
+  transition: background-color 0.5s;
 
 }
 #div1:hover{

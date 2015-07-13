@@ -5,6 +5,7 @@
 	<link href="css/paginaMostrarSubasta.css" rel="stylesheet">
 	<script src="../Bootstrap/dist/js/jquery-1.11.2.min.js"></script>
 	<script src="js/ofertar.js"></script>
+	<script src="js/paginaMostrarSubasta.js"></script>
 </head>
 
 
@@ -33,6 +34,8 @@ mysql_select_db("bestnid",$conexion)
 $registros=mysql_query("select * from subasta inner join categoria on subasta.cate=categoria.ID_CAT  where subasta.ID_SUB=$idsub",$conexion) or
 	die("Problemas en el select:".mysql_error());
 
+$conto="0";
+if(isset($_SESSION['id'])){
 $canto=mysql_query("select user, count(*) as cant_or 
                      from oferta
                      where  $_SESSION[id]=user",$conexion) or
@@ -42,12 +45,12 @@ $canto=mysql_query("select user, count(*) as cant_or
 #ofertas de el usuario logueado con la subasta actual
 $consulo=mysql_query("select *  from oferta where oferta.user=$_SESSION[id] and oferta.sub=$_REQUEST[idsubasta]",$conexion) or
 	die("Problemas en el select:".mysql_error());
-$conto="0";
 $tempo="basura";
 while ($tmp=mysql_fetch_array($consulo))
 	{
   $conto=$conto+"1";
   $tempo=$tmp['Motivo'];
+}
 }
 
 $reg=mysql_fetch_array($registros); 
@@ -68,7 +71,13 @@ $reg=mysql_fetch_array($registros);
 	<div class="container-fluid">
 	<div class="row">
 
+		<?php 
+        
+	    if((isset($_SESSION['id']) && ($_SESSION['id']!=$reg['user']) && ($reg['Activo']==1)) || ($conto!="0")){ ?>
 		<div class="col-lg-9">
+		<?php } else{ ?>
+		<div class="col-lg-12">
+		<?php } ?>
 			<div class="container-fluid material_card" id="infoSubasta">
 				<div class="row">
 					<!-- <div class="container-fluid"> -->
@@ -98,7 +107,7 @@ $reg=mysql_fetch_array($registros);
         
 	    <?php 
         
-	    if((isset($_SESSION['id']) & ($_SESSION['id']!=$reg['user']) & ($conto=="0"))){ ?>
+	    if(isset($_SESSION['id']) && ($_SESSION['id']!=$reg['user']) && ($conto=="0") && ($reg['Activo']==1)){ ?>
 	    <div class="col-lg-3">
 				<div class="container-fluid material_card" id="detalleSubasta">
 					
@@ -141,7 +150,7 @@ $reg=mysql_fetch_array($registros);
         <div  class="col-lg-3">
             <div class="container-fluid material_card" id="idsubastaOfertada">
             	<div class="container-fluid">
-                <h2>usted ya oferto en esta subasta</h2>
+                <h2>Usted ya oferto en esta subasta</h2>
                 <br>
                 <center>
                 <button class="btn btn-danger" data-toggle="modal" data-target="#p">detalles</button>      
@@ -149,19 +158,19 @@ $reg=mysql_fetch_array($registros);
                 </div>
              </div>
         </div>
-	</div>
 	<?php }?>
+	</div>
 
 
 
 
 	<br>
 	<br>
-	<div class="row">
+	<div id="containerComentarios" class="row">
 		<div class="col-lg-12">
 			<div class="container-fluid material_card transparent">
 				<h1 class="text-center">Comentarios para la subasta</h1>
-				<?php if(isset($_SESSION['id']) && $_SESSION['id']!=$reg['user']){ ?>
+				<?php if(isset($_SESSION['id']) && $_SESSION['id']!=$reg['user'] && $reg['Activo']==1){ ?>
 				<?php require_once("DBquery/comentar.php") ?>
 				<hr>
 				<?php } ?>
@@ -172,6 +181,8 @@ $reg=mysql_fetch_array($registros);
 	</div>
 	<br>
 	<br>
+	<button id="viewCommentsButton" class="btn btn-default searchButton" onclick="scrollToAnchor('containerComentarios')">Ver comentarios</button>
+
 </body>
 
 <!--modal de detalles ofertas-->

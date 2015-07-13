@@ -7,6 +7,17 @@ function registrarVenta(id){
 			data:{"idoferta": id},
 			success:function(msg){
 					// alert("venta registrada!");
+					enviarNotificaciones(id);
+			}
+	})
+}
+
+function enviarNotificaciones(id){
+	$.ajax({type:"POST",
+			url:"notificacion_ganador.php",
+			data:{"idoferta": id},
+			success:function(msg){
+					// alert("notificaciones enviadas!");
 			}
 	})
 }

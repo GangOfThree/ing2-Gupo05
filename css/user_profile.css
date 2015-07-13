@@ -2,13 +2,65 @@
 	background-color: white;
 	box-shadow: 0 4px 8px rgba(0,0,0,.34);
 }
+#deleteButton{
+	/*display: block;*/
+	position: relative;
+	top: 25px ;
+	opacity: 0;
+	transition: opacity 0.2s linear 0s;
+}
+#profileContainer:hover #deleteButton{
+	opacity: 1;
+}
 #desplegar{
 	cursor: pointer;
 }
 #arrow{
 	border-width: 6px;
 }
+#edit{
+	display: none;
+}
+#editPass{
+	display: none;
+}
+.hidden{
+	display:none;
+}
 body{
 	padding-top:70px;
 	overflow-x:hidden;
+}
+p{
+	line-height: 23px;
+}
+span{
+	cursor:default;
+}
+input.edit-input:invalid{
+	background-color: #ffd4d4;
+	border-width: 1px;
+	border-style: solid;
+	border-color: red;
+}
+input.edit-input:valid{
+	background-color: #d4ffd4;
+	border-width: 1px;
+	border-style: solid;
+	border-color: green;
+}
+input:focus{
+	outline: none;
+}
+input.form-control.passwordCheck:valid{
+	background-color: #d4ffd4;
+	border-width: 1px;
+	border-style: solid;
+	border-color: green;
+}
+input.form-control.passwordCheck:focus:invalid{
+	background-color: #ffd4d4;
+	border-width: 1px;
+	border-style: solid;
+	border-color: red;
 }

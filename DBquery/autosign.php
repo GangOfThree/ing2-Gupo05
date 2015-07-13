@@ -21,6 +21,7 @@ $_SESSION['tarjeta']=$reg['Nro_tarjeta'];
 $_SESSION['mail']=$reg['Mail'];
 $_SESSION['password']=$reg['Password'];
 $_SESSION['admin']=$reg['Admin'];
+$_SESSION['userActivo']=$reg['userActivo'];
 
 header('Location: ../principal.php');
 mysql_close($conexion);

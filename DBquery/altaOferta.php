@@ -7,8 +7,8 @@ $conexion=mysql_connect($host,$user,$pw)
 mysql_select_db("bestnid",$conexion) or
   die("Problemas en la seleccion de la base de datos");
 
-mysql_query("INSERT INTO oferta(Motivo,Monto,sub,user) VALUES
-   ('$_REQUEST[Motivo]','$_REQUEST[Monto]','$_REQUEST[idsub]','$_SESSION[id]')", 
+mysql_query("INSERT INTO oferta(Motivo,Monto,sub,user,Fecha) VALUES
+   ('$_REQUEST[Motivo]','$_REQUEST[Monto]','$_REQUEST[idsub]','$_SESSION[id]',CURDATE())", 
    $conexion) or die("Problemas en el select".mysql_error());
 mysql_close($conexion);
 

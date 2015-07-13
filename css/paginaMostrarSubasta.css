@@ -26,6 +26,15 @@
 	border-style: solid; 
 	border-color:#EEEEEE;
 }
+#viewCommentsButton{
+	position: fixed;
+	bottom: 20px;
+	right: 40px;
+	box-shadow: 0 4px 8px rgba(0,0,0,.34);
+}
+#viewCommentsButton:hover{
+	box-shadow: 0 6px 12px rgba(0,0,0,.40);
+}
 body{
 	height:100%;
 	padding-top:70px;
