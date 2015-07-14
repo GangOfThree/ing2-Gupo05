@@ -116,7 +116,7 @@ while ($reg=mysql_fetch_array($registros))
                      echo '</p>'.
                   '</div>';
                   ?>
-                  <?php if (isset['id']){
+                  <?php if (isset(['id'])){
                     if( ($_SESSION['id']==$reg['s_d']) && ($reg['r_eli']==0) ){?>
                        <p class="text-right"><a href="#" class="btn btn-default btn-sm" onclick=preguntaeli(<?php echo $reg['i_r'];?>)><i class="fa fa-trash"></i> Eliminar</a></p>
                   <?php
