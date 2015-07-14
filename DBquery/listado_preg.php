@@ -72,20 +72,21 @@ while ($reg=mysql_fetch_array($registros))
                    '</div>'.
                   '<br>';
                   ?>
-                  <?php if( (($_SESSION['id']==$reg['s_d']) && (!isset($reg['i_r']) )) && ($reg['act']==1) ){
-                    if ($reg['p_eli']==0 ){?>
-                     <form method="post" action="<?php echo 'DBquery/publicar_respuesta.php?idsubasta='.$idsub.'&idpreg='.$reg['i_p'];?>">
+                  <?php if (isset($_SESSION['id'])){
+                    if( (($_SESSION['id']==$reg['s_d']) && (!isset($reg['i_r']) )) && ($reg['act']==1) ){
+                      if ($reg['p_eli']==0 ){?>
+                      <form method="post" action="<?php echo 'DBquery/publicar_respuesta.php?idsubasta='.$idsub.'&idpreg='.$reg['i_p'];?>">
                      
-                     <p class="text-right"><textarea rows=1 cols=100 name="respuesta" style="width:100%; max-width:100%; height:50px" placeholder="Responder esta pregunta..."></textarea>
-                      <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-reply"></i> Responder</button></p>
-                     </form>
+                      <p class="text-right"><textarea rows=1 cols=100 name="respuesta" style="width:100%; max-width:100%; height:50px" placeholder="Responder esta pregunta..."></textarea>
+                        <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-reply"></i> Responder</button></p>
+                      </form>
                   <?php
                 }} else{
                     if ( (($_SESSION['id']==$reg['p_d']) || ($_SESSION['id']==$reg['s_d'])) && ($reg['p_eli']==0) ){?>
                       <p class="text-right"><a href="#" class="btn btn-default btn-sm" onclick=preguntaeli(<?php echo $reg['i_p'];?>)><i class="fa fa-trash"></i> Eliminar</a></p>
                     <?php
                     }
-                }
+                }}
                 echo '</div>'.
               '</div>'.
             '</div>'.
@@ -115,10 +116,11 @@ while ($reg=mysql_fetch_array($registros))
                      echo '</p>'.
                   '</div>';
                   ?>
-                  <?php if( ($_SESSION['id']==$reg['s_d']) && ($reg['r_eli']==0) ){?>
-                     <p class="text-right"><a href="#" class="btn btn-default btn-sm" onclick=preguntaeli(<?php echo $reg['i_r'];?>)><i class="fa fa-trash"></i> Eliminar</a></p>
+                  <?php if (isset['id']){
+                    if( ($_SESSION['id']==$reg['s_d']) && ($reg['r_eli']==0) ){?>
+                       <p class="text-right"><a href="#" class="btn btn-default btn-sm" onclick=preguntaeli(<?php echo $reg['i_r'];?>)><i class="fa fa-trash"></i> Eliminar</a></p>
                   <?php
-                  }
+                  }}
                   echo '</div>'.
               '</div>'.
              '</div>'.
