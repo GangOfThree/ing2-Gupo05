@@ -80,6 +80,8 @@ while ($reg=mysql_fetch_array($registros))
                       <p class="text-right"><textarea rows=1 cols=100 name="respuesta" style="width:100%; max-width:100%; height:50px" placeholder="Responder esta pregunta..."></textarea>
                         <button type="submit" class="btn btn-primary btn-sm"><i class="fa fa-reply"></i> Responder</button></p>
                       </form>
+                      <br>
+                      <p class="text-right"><a href="#" class="btn btn-default btn-sm" onclick=preguntaeli(<?php echo $reg['i_p'];?>)><i class="fa fa-trash"></i> Eliminar</a></p>
                   <?php
                 }} else{
                     if ( (($_SESSION['id']==$reg['p_d']) || ($_SESSION['id']==$reg['s_d'])) && ($reg['p_eli']==0) ){?>
@@ -116,7 +118,7 @@ while ($reg=mysql_fetch_array($registros))
                      echo '</p>'.
                   '</div>';
                   ?>
-                  <?php if (isset(['id'])){
+                  <?php if (isset($_SESSION['id'])){
                     if( ($_SESSION['id']==$reg['s_d']) && ($reg['r_eli']==0) ){?>
                        <p class="text-right"><a href="#" class="btn btn-default btn-sm" onclick=preguntaeli(<?php echo $reg['i_r'];?>)><i class="fa fa-trash"></i> Eliminar</a></p>
                   <?php
