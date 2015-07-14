@@ -98,7 +98,7 @@ $registros=mysql_query("select *
 							<div class="material_card">
 								<div class="container mailhead"> <b>Detalle de la venta</b></div>
 								<div class="container">
-									<b>Monto Recaudado:</b> $<?php echo $reg['Monto'] ?>
+									<b>Monto Recaudado:</b> $<?php echo ($reg['Monto']-(($reg['Monto']*30)/100)) ?>
 								</div>
 							</div>	
 							<br>

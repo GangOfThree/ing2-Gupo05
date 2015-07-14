@@ -18,10 +18,10 @@
 </head>
 <?php   include("/DBquery/DBGetCategorias");?>
 
-
 <?php if($_SESSION['userActivo']==0){ ?>
-<script src="js/active-desactive_account.js"></script>
+<script src="js/active_desactive_account.js"></script>
 <?php } ?>
+
 
 <header>
 
@@ -255,8 +255,8 @@
 <body>
 <a href="AltaSubastaUI.php"><div class="materialButton" data-toggle="tooltip" data-placement="left" title="Agregar una nueva subasta!"><img src="resources/add.png" id="add"></div></a>
 <div id="back" class="container"></div>
-<div class="container-fluid helpButton">
+<a href="paginaAyuda.php"><div class="container-fluid helpButton">
   <span class="content-help"><h4><img id="help-icon" src="resources/question.png"><span id="text-help"> ¿Necesitás ayuda?</span></h4></span>
-</div>
+</div></a>
 </body>
 </html>

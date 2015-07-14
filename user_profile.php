@@ -30,44 +30,53 @@
                         <h2>Mis Datos</h2>
                     </div>
                     <div align="right" class="col-sm-2">
-                        <button id="deleteButton" class="btn btn-default searchButton" data-toggle="modal" data-target="#closeAccount"><i class="glyphicon glyphicon-trash"></i> Eliminar mi cuenta</button>
+                        <button id="deleteButton" class="btn btn-default searchButton" onclick="querySubastaActiva()"><i class="glyphicon glyphicon-trash"></i> Eliminar mi cuenta</button>
                     </div>
 
-                    <div class="modal fade" id="closeAccount" role="dialog">
+                    <div class="modal fade" id="closeAccount" role="dialog" data-backdrop="static">
                         <div class="modal-dialog" style="width:50%">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                                     <h4 class="modal-title"> Desactivar cuenta</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <p><center><b>¿Esta seguro que desea desactivar su cuenta?</b></center></p>
-                                    <p><center><i>*Tenga en cuenta que la cuenta sera desactivada solo en el caso que no posea subastas activas.</i></center></p>
+                                    <div id='passForDelete' class='form-group' style="display:none">
+                                        <label class='control-label' for='newPassInput'>Para desactivar tu cuenta ingresá tu contraseña:</label>
+                                        <input id='passDeleteInput' type='password' class='form-control passwordCheck' minlength='6' maxlength='20' onkeyup='verificarPassDelete(this)' required
+                                        data-toggle='popover' data-placement='right' data-content='Ingresá la contraseña con la que te registraste'>
+                                        <span class='glyphicon glyphicon-ok form-control-feedback' aria-hidden='true'></span>
+                                    </div>
+                                    <span id="mensajeNonDelete" style="display:none"><center><h4>No se puede desactivar tu cuenta, existen subastas activas en tu perfil.</h4></center></span>
+                                    <!-- <p><center><b>¿Esta seguro que desea desactivar su cuenta?</b></center></p>
+                                    <p><center><i>*Tenga en cuenta que la cuenta sera desactivada solo en el caso que no posea subastas activas.</i></center></p> -->
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="closeProfile();">Aceptar</button>
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    <span id="controlDelete">
+                                    <button id="confirmDelete" type="button" class="btn btn-primary" disabled data-toggle="modal" data-target="#closeAccountFeedback">Aceptar</button>
+                                    <button id="cancelDelete" type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                                    </span>
+                                    <button id="closeDelete" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="modal fade" id="closeAccountFeedback" role="dialog" data-backdrop="static">
-                        <div class="modal-dialog" style="width:50%">
+                        <div class="modal-dialog" style="width:35%">
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <h4 class="modal-title"> Aviso</h4>
                                 </div>
                                 <div class="modal-body">
-                                    <center><p><b id="feedbackContent"></b></p></center>
+                                    <center><p><b>¿Estás seguro de desactivar tu cuenta?</b><br>Podrás volverla a activar iniciando sesión como lo haces tradicionalmente</p></center>
                                 </div>
                                 <div class="modal-footer">
-                                    <button id="closeAlert" type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                                    <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="closeProfile();">Aceptar</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>    
     			<hr>
                 <div class="col-sm-2">

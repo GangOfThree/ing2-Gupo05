@@ -7,7 +7,6 @@ $(document).ready(function(){
         $.ajax({type:"POST",
         url:"DBquery/user_active.php",
         success:function(msg){
-          alert("User activo!");
         }   
         });
     });

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 13-07-2015 a las 19:31:28
+-- Tiempo de generación: 14-07-2015 a las 20:39:38
 -- Versión del servidor: 5.6.21
 -- Versión de PHP: 5.6.3
 
@@ -64,15 +64,15 @@ CREATE TABLE IF NOT EXISTS `notificacion` (
   `Mensaje` varchar(600) NOT NULL,
   `Leido` tinyint(4) NOT NULL DEFAULT '0',
   `Borrado` tinyint(4) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `notificacion`
 --
 
 INSERT INTO `notificacion` (`ID_NTF`, `Origen`, `Destino`, `Fecha`, `Hora`, `Mensaje`, `Leido`, `Borrado`) VALUES
-(52, 'Bestnid', 49, '2015-07-06', '20:28:20', 'Elegiste el ganador para tu subasta:"Silla de computadora"<br><u><b>Datos del ganador</b></u><br><b>Nombre: </b>Cristian<br><b>Apellido: </b>Alvarado<br><b>E-mail: </b>a@a.com<br><u><b>Datos de la subasta</b></u><br><b>Monto recaudado: </b>$132', 1, 0),
-(53, 'Bestnid', 48, '2015-07-06', '20:28:20', 'Ganaste la subasta:"Silla de computadora"<br><u><b>Datos del vendedor</b></u><br><b>Nombre: </b>Lucas<br><b>Apellido: </b>Cuevas<br><b>E-mail: </b>lucas@bestnid.com<br><u><b>Datos de la subasta</b></u><br><b>Monto a abonar: </b>$132', 1, 0);
+(64, 'Bestnid', 49, '2015-07-14', '18:25:01', 'Elegiste el ganador para tu subasta:"Silla de computadora"<br><u><b>Datos del ganador</b></u><br><b>Nombre: </b>Cristian<br><b>Apellido: </b>Alvarado<br><b>E-mail: </b>a@a.com<br><u><b>Datos de la subasta</b></u><br><b>Monto recaudado: </b>$210', 0, 0),
+(65, 'Bestnid', 48, '2015-07-14', '18:25:01', 'Ganaste la subasta:"Silla de computadora"<br><u><b>Datos del vendedor</b></u><br><b>Nombre: </b>Lucas<br><b>Apellido: </b>Cuevas<br><b>E-mail: </b>lucas@bestnid.com<br><u><b>Datos de la subasta</b></u><br><b>Monto a abonar: </b>$300', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `oferta` (
   `user` int(11) NOT NULL,
   `sub` int(11) NOT NULL,
   `Fecha` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `oferta`
@@ -102,9 +102,9 @@ INSERT INTO `oferta` (`ID_OFE`, `Motivo`, `Monto`, `user`, `sub`, `Fecha`) VALUE
 (19, 'Se me romppio el mio peor', 50, 51, 33, '2015-07-28'),
 (20, 'Se me romppio el mio mucho peor', 50, 52, 33, '2015-07-28'),
 (21, 'lalalala', 50, 53, 33, '2015-07-28'),
-(22, 'ultimamente no me siento comodo en mi silla', 132, 48, 26, '2015-07-29'),
 (23, 'es muylindoooooo', 7, 48, 27, '2015-07-31'),
-(24, 'Me gusta la madera y mi casa es toda de madera, FIN', 2000, 49, 23, '2015-07-13');
+(24, 'Me gusta la madera y mi casa es toda de madera, FIN', 2000, 49, 23, '2015-07-13'),
+(25, 'Ultimamente no me siento muy comodo en mi silla', 300, 48, 26, '2015-07-13');
 
 -- --------------------------------------------------------
 
@@ -218,15 +218,14 @@ CREATE TABLE IF NOT EXISTS `venta` (
   `sub` int(11) NOT NULL,
   `user_ven` int(11) NOT NULL,
   `user_comp` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `venta`
 --
 
 INSERT INTO `venta` (`NRO_VEN`, `Fecha`, `Motivo`, `Monto`, `Monto_dueno`, `sub`, `user_ven`, `user_comp`) VALUES
-(2, '2015-06-27', 'Lo necesito para mi trabajo', 20000, 6000, 20, 47, 48),
-(39, '2015-07-06', 'ultimamente no me siento comodo en mi silla', 132, 39.6, 26, 49, 48);
+(45, '2015-07-14', 'Ultimamente no me siento muy comodo en mi silla', 210, 90, 26, 49, 48);
 
 --
 -- Índices para tablas volcadas
@@ -287,12 +286,12 @@ MODIFY `ID_CAT` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=16;
 -- AUTO_INCREMENT de la tabla `notificacion`
 --
 ALTER TABLE `notificacion`
-MODIFY `ID_NTF` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=56;
+MODIFY `ID_NTF` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=66;
 --
 -- AUTO_INCREMENT de la tabla `oferta`
 --
 ALTER TABLE `oferta`
-MODIFY `ID_OFE` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=25;
+MODIFY `ID_OFE` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `pregunta`
 --
@@ -312,7 +311,7 @@ MODIFY `ID_USR` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=54;
 -- AUTO_INCREMENT de la tabla `venta`
 --
 ALTER TABLE `venta`
-MODIFY `NRO_VEN` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=41;
+MODIFY `NRO_VEN` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=46;
 DELIMITER $$
 --
 -- Eventos

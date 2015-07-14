@@ -1,0 +1,41 @@
+.material_card{
+	text-align: center;
+	cursor: pointer;
+}
+.material_card span,p,h4{
+	text-align: left;
+}
+.material_card h4{
+	cursor: pointer;
+}
+.sliderPanel{
+	display: none;
+}
+.separador{
+	height: 10px; 
+	width:100%;
+}
+#viewContactButton{
+	position: fixed;
+	bottom: 20px;
+	right: 40px;
+	box-shadow: 0 4px 8px rgba(0,0,0,.34);
+	opacity: 0.7;
+	transition: background-color .2s linear,box-shadow .2s linear,opacity .3s linear;
+}
+#viewContactButton:hover{
+	opacity: 0.95;
+	box-shadow: 0 6px 12px rgba(0,0,0,.40);
+}
+#download{
+	font-size: 12px;
+	opacity: 0.7;
+	transition: background-color .2s linear,box-shadow .2s linear,opacity .3s linear;
+}
+#download:hover{
+	opacity: 0.95;
+}
+#title-help{
+	position: relative;
+	left:40px;
+}

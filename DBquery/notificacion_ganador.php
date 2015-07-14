@@ -17,6 +17,8 @@ $registros=mysql_query("select *
 
 $reg=mysql_fetch_array($registros);
 
+$monto=$reg['Monto']-($reg['Monto'] * 30) / 100;
+
 $mensajeVendedor='Elegiste el ganador para tu subasta:"'.$reg['Titulo'].'"'.
 				 '<br>'.
 				 '<u><b>Datos del ganador</b></u>'.
@@ -29,7 +31,7 @@ $mensajeVendedor='Elegiste el ganador para tu subasta:"'.$reg['Titulo'].'"'.
 				 '<br>'.
 				 '<u><b>Datos de la subasta</b></u>'.
 				 '<br>'.
-				 '<b>Monto recaudado: </b>$'.$reg['Monto'];
+				 '<b>Monto recaudado: </b>$'.$monto;
 
 $mensajeComprador='Ganaste la subasta:"'.$reg['Titulo'].'"'.
 				 '<br>'.

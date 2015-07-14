@@ -193,20 +193,51 @@ function activarConfirmacion(){
 	}
 }
 
+function querySubastaActiva(){
+	$.ajax({type:"POST",
+			url:"DBquery/query_subastas_activas.php",
+			success:function(msg){
+				if(msg!=0){
+					$("#controlDelete").show();
+					$("#closeDelete").hide();
+					document.getElementById("passDeleteInput").pattern=msg;
+					verificarPassDelete(document.getElementById("passDeleteInput"));
+					$("#mensajeNonDelete").hide();
+					$("#passForDelete").show();
+				}
+				else{
+					$("#controlDelete").hide();
+					$("#closeDelete").show();
+					$("#passForDelete").hide();
+					$("#mensajeNonDelete").show();
+				}
+				$("#closeAccount").modal();
+			}		
+	});
+}
+
+$(document).ready(function(){
+	$("#cancelDelete").click(function(){
+		$("#passDeleteInput").val("");
+		$("#passDeleteInput").popover("destroy");
+	});
+});
+
+function verificarPassDelete(input){
+	if(input.checkValidity()){
+		$("#passForDelete").addClass("has-success has-feedback");
+		$("#confirmDelete")[0].disabled=false;
+	}
+	else{
+		$("#passForDelete").removeClass("has-success has-feedback");
+		$("#confirmDelete")[0].disabled=true;
+	}
+}
 function closeProfile(){
 	$.ajax({type:"POST",
 			url:"DBquery/user_baja.php",
 			success:function(msg){
-				if(msg==0){
-					$("#feedbackContent").text("¡La cuenta ha sido desactivada!");
-					$("#closeAlert").click(function(){
-						$(location).attr('href','DBquery/cerrar_sesion.php');
-					});
-				}
-				else{
-					$("#feedbackContent").text("¡No se puede desactivar la cuenta!, existen subastas activas");
-				}
-				$("#closeAccountFeedback").modal();
+				$(location).attr('href','DBquery/cerrar_sesion.php');
 			}		
 	});
 }

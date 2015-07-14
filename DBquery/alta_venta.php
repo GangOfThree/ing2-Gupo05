@@ -19,10 +19,11 @@ $reg=mysql_fetch_array($registros);
 
 
 $montoRecaudado=($reg['Monto'] * 30) / 100;
+$monto=$reg['Monto'] - $montoRecaudado;
 
 
 mysql_query("INSERT INTO venta(Fecha,Motivo,Monto,Monto_dueno,sub,user_ven,user_comp) VALUES
-   ( CURDATE(),'$reg[Motivo]','$reg[Monto]','$montoRecaudado','$reg[sub]','$reg[user]','$reg[comprador]')", 
+   ( CURDATE(),'$reg[Motivo]','$monto','$montoRecaudado','$reg[sub]','$reg[user]','$reg[comprador]')", 
    $conexion) or die("Problemas en el select".mysql_error());
 mysql_close($conexion);
 echo 0;
